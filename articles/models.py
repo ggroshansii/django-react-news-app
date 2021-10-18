@@ -10,3 +10,4 @@ class Article(models.Model):
     updated_at = models.DateTimeField()
     image = models.ImageField(upload_to='profiles/', null=True)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.cascade)
+    category = models.CharField(max_length = 25)
