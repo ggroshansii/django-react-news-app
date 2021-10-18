@@ -9,5 +9,6 @@ class Article(models.Model):
     created_at = models.DateTimeField()
     updated_at = models.DateTimeField()
     image = models.ImageField(upload_to='profiles/', null=True)
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.cascade)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     category = models.CharField(max_length = 25)
+    popularity_score = models.IntegerField()
