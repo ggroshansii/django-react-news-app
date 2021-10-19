@@ -21,8 +21,7 @@ export default function Registration() {
     }
 
 
-
-    function handleSubmit(e) {
+   async function handleSubmit(e) {
         e.preventDefault();
         if (user.password1 !== user.password2) {
             setError(true)
@@ -35,9 +34,27 @@ export default function Registration() {
                 },
                 body: JSON.stringify(user)
             }
-            const response = fetch(url, options)
+           const response = await fetch("/rest-auth/registration/", options)
+                if (response.ok === false) {
+                    const data = await response.json()
+                    if (data.username) {
+                        data.username.map(element => console.log(element))
+                    }
+                    if(data.email) {
+                        data.email.map(element => console.log(element))
+                    }
+                    if (data.password1) {
+                        data.password1.map(element => console.log(element))
+                    }
+                } else {
+                    const data = await response.json();
+                    Cookies.set("Authorization", `Token: ${data.key}`)
+                    console.log("RESPONSE", response)
+                    console.log("DATA", data)
+                    console.log("key", data.key)
+                }
+            }
         }
-    }
 
     return (
         <div className="registration-container">
