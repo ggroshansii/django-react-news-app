@@ -34,7 +34,7 @@ switch (page) {
   return (
     <div className="App">
     <Header/>
-    {html}
+    <Main/>
     <Footer/>
 
     </div>
