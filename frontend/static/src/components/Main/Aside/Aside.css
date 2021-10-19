@@ -1,7 +1,14 @@
 .aside-container {
     width: 300px; 
     height: 100vh;
+    margin-top: 1.5rem;
     border: 1px solid black;
     overflow: hidden;
     padding: 1rem;
+    background-color:#FFFFFF;
+}
+
+.aside-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
 }
