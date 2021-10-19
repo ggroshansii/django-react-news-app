@@ -2,10 +2,24 @@
 
 .header-container {
     font-family: 'Playfair Display', serif; 
+
 }
 
 .newspaper-name {
-
+    margin-bottom: 0;
     font-size: 3rem;
     font-weight: 900;
+}
+
+.header-date {
+    margin-top: 0.5rem;
+}
+
+.header-category-container {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.header-category {
+    margin: 0.25rem 0rem;
 }
