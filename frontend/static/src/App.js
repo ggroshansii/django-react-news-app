@@ -11,6 +11,11 @@ import { useState, useEffect } from 'react'
 
 function App() {
 
+const [state, setState] = useState({
+  isAuth: null,
+  page: 'splash',
+})
+
 useEffect(()=> {
   const isAuth = Cookies.get('Authorization')
   if (!!isAuth) {
@@ -26,11 +31,27 @@ useEffect(()=> {
   }
 }, [])
 
+useEffect(() => {
+  grabArticles()
+}, [])
 
-const [state, setState] = useState({
-  isAuth: null,
-  page: 'splash',
-})
+async function grabArticles() {
+    const options = {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+      }
+    }
+    const response = await fetch('/api/articles/')
+    const data = response.json()
+    if (response.ok === false) {
+      console.log("R",response)
+      console.log("D", data)
+    } else {
+      console.log("success", data)
+    }
+}
+
 
 let html;
 switch (state.page) {
