@@ -49,7 +49,6 @@ export default function Header() {
             break;
     }
 
-    console.log(month_string)
     return (
         <div className="header-container">
             <h1 className="newspaper-name">The Gartholomew Gazette</h1>

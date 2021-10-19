@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Cookies from 'js-cookie'
 
-export default function Registration() {
+export default function Registration(props) {
     const [user, setUser] = useState({
         username: "",
         email: "",
@@ -52,6 +52,11 @@ export default function Registration() {
                     console.log("RESPONSE", response)
                     console.log("DATA", data)
                     console.log("key", data.key)
+                    props.setState(prevState => ({
+                        ...prevState,
+                        isAuth: true,
+                        page: 'content'
+                    }))
                 }
             }
         }
