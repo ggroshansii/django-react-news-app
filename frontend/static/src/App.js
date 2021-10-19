@@ -10,12 +10,16 @@ import { useState } from 'react'
 
 function App() {
 
-const [page, setPage] = useState("splash")
+
+const [state, setState] = useState({
+  isAuth: null,
+  page: 'splash',
+})
 
 let html;
-switch (page) {
+switch (state.page) {
   case 'splash':
-    html = <Splash setPage={setPage}/>
+    html = <Splash setState={setState}/>
     break;
   case 'register':
     html = <Registration/>
