@@ -15,7 +15,7 @@ const [page, setPage] = useState("splash")
 let html;
 switch (page) {
   case 'splash':
-    html = <Splash changePage={changePage}/>
+    html = <Splash setPage={setPage}/>
     break;
   case 'register':
     html = <Registration/>
@@ -27,16 +27,12 @@ switch (page) {
     html = <Main/>
   }
 
-  function changePage(val) {
-    setPage(val)
-  }
 
   return (
     <div className="App">
     <Header/>
-    <Main/>
+    {html}
     <Footer/>
-
     </div>
   );
 }

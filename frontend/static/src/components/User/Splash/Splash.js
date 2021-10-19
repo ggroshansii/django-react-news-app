@@ -4,7 +4,7 @@ import React from 'react'
 export default function Splash(props) {
 
 function handleClick(e) {
-    props.changePage(e.target.value)
+    props.setPage(e.target.value)
 }
 
     return (
