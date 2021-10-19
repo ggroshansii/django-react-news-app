@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Cookies from 'js-cookies'
+import Cookies from 'js-cookie'
 
 export default function Registration() {
     const [user, setUser] = useState({
