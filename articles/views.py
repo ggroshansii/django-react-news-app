@@ -5,7 +5,7 @@ from .models import Article
 
 # Create your views here.
 
-class ArticleListView (generics.ListAPIView):
+class ArticleListView (generics.ListCreateAPIView):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
 

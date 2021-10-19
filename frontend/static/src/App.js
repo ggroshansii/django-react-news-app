@@ -43,7 +43,7 @@ async function grabArticles() {
       }
     }
     const response = await fetch('/api/articles/')
-    const data = response.json()
+    const data = await response.json()
     if (response.ok === false) {
       console.log("R",response)
       console.log("D", data)
