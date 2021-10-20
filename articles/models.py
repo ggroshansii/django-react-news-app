@@ -9,6 +9,7 @@ class Article(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='profiles/', null=True)
+
     category = models.CharField(max_length = 25)
 
     def __str__(self):

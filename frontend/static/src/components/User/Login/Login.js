@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 import Cookies from 'js-cookie'
+import { withRouter } from 'react-router'
 
-export default function Login(props) {
+function Login(props) {
 
     const [user, setUser] = useState({
         username: "",
@@ -29,16 +30,11 @@ export default function Login(props) {
         const response = await fetch("/rest-auth/login/", options)
         if (response.ok === false) {
             const data = await response.json()
-            console.log(response)
-            console.log(data)
         } else {
             const data = await response.json()
             Cookies.set("Authorization", `Token ${data.key}`)
-            console.log(data)
-            props.setState(() => ({
-                isAuth: true,
-                page: 'content'
-            }))
+            props.setIsAuth(true);
+            props.history.push('/profile')
         }
     }
 
@@ -58,3 +54,5 @@ export default function Login(props) {
         </div>
     )
 }
+
+export default withRouter(Login)

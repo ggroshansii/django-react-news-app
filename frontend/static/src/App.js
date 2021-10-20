@@ -1,83 +1,76 @@
-
-import './App.css';
-import Cookies from 'js-cookie';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import Main from './components/Main/Main';
-import Splash from './components/User/Splash/Splash';
-import Registration from './components/User/Registration/Registration';
-import Login from './components/User/Login/Login';
-import { useState, useEffect } from 'react'
+import "./App.css";
+import Cookies from "js-cookie";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Main from "./components/Main/Main";
+import Splash from "./components/User/Splash/Splash";
+import Profile from "./components/User/Profile/Profile"
+import Registration from "./components/User/Registration/Registration";
+import Login from "./components/User/Login/Login";
+import BlogForm from './components/Main/BlogForm/BlogForm';
+import { useState, useEffect } from "react";
+import { Route, Switch, withRoute, useHistory } from "react-router-dom";
 
 function App() {
 
-const [state, setState] = useState({
-  isAuth: null,
-  page: 'splash',
-})
+    const [isAuth, setIsAuth] = useState();
+    const [currentArticles, setCurrentArticles] = useState([]);
+    const history = useHistory();
 
-const [currentArticles, setCurrentArticles] = useState([])
+    useEffect(() => {
+        const checkAuth = async () => {
+            const response = await fetch("rest-auth/user/");
+            if (response.ok === false) {
+                setIsAuth(false);
+                history.push("/login");
+            } else {
+                setIsAuth(true);
+                history.push("/profile");
+            }
+            checkAuth();
+        };
+    }, [history]);
 
-useEffect(()=> {
-  const isAuth = Cookies.get('Authorization')
-  if (!!isAuth) {
-    setState(() => ({
-      isAuth: true,
-      page: 'content'
-    }))
-  } else {
-    setState(() => ({
-      isAuth: null,
-      page: 'login'
-    }))
-  }
-}, [])
+    useEffect(() => {
+        grabArticles();
+    }, []);
 
-useEffect(() => {
-  grabArticles()
-}, [])
-
-async function grabArticles() {
-    const options = {
-      method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-      }
+    async function grabArticles() {
+        const options = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+        const response = await fetch("/api/articles/");
+        const data = await response.json();
+        if (response.ok === false) {
+        } else {
+            setCurrentArticles(data);
+        }
     }
-    const response = await fetch('/api/articles/')
-    const data = await response.json()
-    if (response.ok === false) {
-      console.log("R",response)
-      console.log("D", data)
-    } else {
-      console.log("success", data)
-      setCurrentArticles(data);
-    }
-}
 
-let html;
-switch (state.page) {
-  case 'splash':
-    html = <Splash setState={setState}/>
-    break;
-  case 'register':
-    html = <Registration setState={setState}/>
-    break;
-  case 'login':
-    html = <Login setState={setState}/>
-    break;
-  case 'content':
-    html = <Main currentArticles={currentArticles}/>
-  }
+    return (
+        <>
+            <Header currentArticles={currentArticles} />
+            <Switch>
+                <Route path="/login">
+                    <Login isAuth={isAuth} setIsAuth={setIsAuth} />
+                </Route>
+                <Route path="/registration">
+                    <Registration />
+                </Route>
+                <Route path="/profile">
+                    <Profile />
+                </Route>
+                <Route path="/blogs/create">
+                    <BlogForm />
+                </Route>
+            </Switch>
+            <Footer />
 
-
-  return (
-    <div className="App">
-    <Header currentArticles={currentArticles}/>
-    {html}
-    <Footer/>
-    </div>
-  );
+        </>
+    );
 }
 
 export default App;

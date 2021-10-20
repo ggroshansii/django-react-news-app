@@ -39,13 +39,12 @@ export default function BlogForm() {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        alert('hey');
         const formData = new FormData();
         formData.append('title', post.title)
         formData.append('body', post.body)
         formData.append('image', post.image)
         formData.append('category', post.category)
-
-        console.log("FD", formData)
 
         const options = {
             method: "POST",
@@ -126,7 +125,7 @@ export default function BlogForm() {
                         <option value="General Tectonics">General Tectonics</option>
                     </select>
                 </div>
-                <button type="submit">Submit Article</button>
+                <button type="submit">Submit New Draft</button>
             </form>
         </div>
     );

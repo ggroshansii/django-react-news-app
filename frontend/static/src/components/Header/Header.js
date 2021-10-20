@@ -1,5 +1,6 @@
 import "./Header.css";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Header(props) {
     const currentDate = new Date();
@@ -55,6 +56,22 @@ export default function Header(props) {
             <h2 className="header-date">
                 {month_string}, {day} {year}{" "}
             </h2>
+            <div className="collpase navbar-collapse" id="navbarResponsive">
+                        <ul className="navbar-nav ml-auto">
+                            <li className="nav-item">
+                                <NavLink to="/">Home</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to="/profile">Profile</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to="/login">Login</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to="/registration">Registration</NavLink>
+                            </li>
+                        </ul>
+                    </div>
             <div className="header-category-container">
             {props.currentArticles.map(article => {
                 return <p className="header-category">#{article.category}</p>})}
