@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Cookies from "js-cookie";
 import BlogForm from "../../Main/BlogForm/BlogForm"
+import { NavLink } from 'react-router-dom'
 
 function Profile() {
     const [profile, setProfile] = useState({
@@ -82,11 +83,10 @@ function Profile() {
                     Save profile
                 </button>
 
-                <div className="article-draft-form-container col-6 mx-auto">
-                <h2 className="mt-5">Draft Submit Form</h2>
-                </div>
-
             </form>
+            <div>
+               <NavLink to="/articles/drafts"><button>See My Drafts</button></NavLink>
+            </div>
         </div>
     );
 }
