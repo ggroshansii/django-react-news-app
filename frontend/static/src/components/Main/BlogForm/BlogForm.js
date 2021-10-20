@@ -53,6 +53,12 @@ export default function BlogForm() {
             console.log('d', data);
         } else {
             console.log('SUCCESS', data)
+            setPost(() => ({
+                title: "",
+                body: "",
+                image: null,
+                category: "General Science",
+            }))
         }
     }
 
@@ -101,7 +107,7 @@ export default function BlogForm() {
                         value={post.category}
                         name="category"
                     >
-                        <option value="General Science" selected>General Science</option>
+                        <option value="General Science">General Science</option>
                         <option value="Geology">Geology</option>
                         <option value="Soil Science">Soil Science</option>
                         <option value="Hydrology">Hydrology</option>

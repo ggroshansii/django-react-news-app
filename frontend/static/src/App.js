@@ -16,6 +16,8 @@ const [state, setState] = useState({
   page: 'splash',
 })
 
+const [currentArticles, setCurrentArticles] = useState([])
+
 useEffect(()=> {
   const isAuth = Cookies.get('Authorization')
   if (!!isAuth) {
@@ -49,6 +51,7 @@ async function grabArticles() {
       console.log("D", data)
     } else {
       console.log("success", data)
+      setCurrentArticles(data);
     }
 }
 
@@ -65,7 +68,7 @@ switch (state.page) {
     html = <Login setState={setState}/>
     break;
   case 'content':
-    html = <Main/>
+    html = <Main currentArticles={currentArticles}/>
   }
 
 

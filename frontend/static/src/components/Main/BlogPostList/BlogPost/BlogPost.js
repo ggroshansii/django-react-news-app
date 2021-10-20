@@ -1,7 +1,19 @@
 import React from "react";
 import "./BlogPost.css";
+import { useState } from 'react';
 
-export default function BlogPost() {
+export default function BlogPost(props) {
+
+    const [preview, setPreview] = useState("");
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+        setPreview(reader.result);
+    }
+    reader.readAsDataURL(props.image)
+
+    console.log("PROPS", props.image)
+
     return (
         <div>
             <div className="blog-card-container">
