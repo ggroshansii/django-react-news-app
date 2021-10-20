@@ -3,6 +3,17 @@ from django.db import models
 from django.conf import settings
 
 class Article(models.Model):
+    DRAFT = 'DFT'
+    SUBMITTED = 'SBMT'
+    PUBLISHED = 'PBLH'
+    REJECTED = 'RJT'
+    STATUS_CHOICES = [
+        (DRAFT, 'Draft'),
+        (SUBMITTED, 'Submitted'),
+        (PUBLISHED, 'Published'),
+        (REJECTED, 'Rejected')
+    ]
+    status = models.CharField(max_length=4, choices=STATUS_CHOICES , default=DRAFT)
     title = models.CharField(max_length= 255)
     body = models.CharField(max_length= 1000)
     author = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, null=True)
