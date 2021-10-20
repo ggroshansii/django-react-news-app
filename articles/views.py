@@ -14,6 +14,10 @@ class ArticleListView (generics.ListCreateAPIView):
     queryset = Article.objects.all()
     permissions_classes = (IsAuthenticatedOrReadOnly,)
 
+    def get_queryset(self):
+        user = self.request.user
+        return Article.objects.filter(author=user)
+
     def perform_create(self, serializer):
         author = self.request.user
         serializer.save(author=author)

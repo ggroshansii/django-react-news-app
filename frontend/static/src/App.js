@@ -2,7 +2,7 @@ import "./App.css";
 import Cookies from "js-cookie";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import OwnArticles from "./components/User/OwnArticles/OwnArticles";
+import OwnBlogs from "./components/User/OwnBlogs/OwnBlogs";
 import Main from "./components/Main/Main";
 import Splash from "./components/User/Splash/Splash";
 import Profile from "./components/User/Profile/Profile"
@@ -67,8 +67,8 @@ function App() {
                 <Route path="/blogs/create">
                     <BlogForm />
                 </Route>
-                <Route path="/articles/drafts">
-                    <OwnArticles />
+                <Route path="/blogs/drafts">
+                    <OwnBlogs />
                 </Route>
             </Switch>
             <Footer />
