@@ -7,11 +7,9 @@ export default function BlogForm() {
     const [post, setPost] = useState({
         title: "",
         body: "",
-        image: "",
-        category: "",
+        image: null,
+        category: "General Science",
     })
-
-
 
     function handleChange(e) {
         let updatedPost = {
@@ -32,14 +30,21 @@ export default function BlogForm() {
     }
 
     async function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('title', post.title)
+        formData.append('body', post.body)
+        formData.append('image', post.image)
+        formData.append('category', post.category)
+
+        console.log("FD", formData)
+
         const options = {
             method: "POST",
             headers: {
-                "Content-Type": 'application/json',
                 "X-CSRFToken": Cookies.get('csrftoken')
             },
-            body: JSON.stringify(post)
+            body: formData
         }
         const response = await fetch("/api/articles/", options)
         const data = await response.json()
@@ -62,6 +67,8 @@ export default function BlogForm() {
                         id="title"
                         placeholder="Enter Title.."
                         onChange={handleChange}
+                        value={post.title}
+                        name="title"
                     />
                 </div>
                 <div className="form-group">
@@ -71,6 +78,8 @@ export default function BlogForm() {
                         id="body"
                         placeholder="Enter Body.."
                         onChange={handleChange}
+                        value={post.body}
+                        name="body"
                     />
                 </div>
                 <div className="form-group">
@@ -80,6 +89,7 @@ export default function BlogForm() {
                         type="file"
                         id="image"
                         onChange={handleImage}
+                        name="image"
                     />
                 </div>
                 <div className="form-group">
@@ -88,6 +98,8 @@ export default function BlogForm() {
                         className="form-control"
                         id="category"
                         onChange={handleChange}
+                        value={post.category}
+                        name="category"
                     >
                         <option value="General Science" selected>General Science</option>
                         <option value="Geology">Geology</option>
