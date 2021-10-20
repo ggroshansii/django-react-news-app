@@ -4,15 +4,6 @@ import { useState } from 'react';
 
 export default function BlogPost(props) {
 
-    const [preview, setPreview] = useState("");
-
-    const reader = new FileReader();
-    reader.onloadend = () => {
-        setPreview(reader.result);
-    }
-    reader.readAsDataURL(props.image)
-
-    console.log("PROPS", props.image)
 
     return (
         <div>
@@ -20,16 +11,16 @@ export default function BlogPost(props) {
                 <div className="blog-card-img-container">
                     <img
                         className="blog-card-img"
-                        src="https://www.sciencenews.org/wp-content/uploads/2021/07/072221_LG-HT_star-age_feat.jpg"
+                        src={props.image}
                         alt=""
                     />
                 </div>
                 <div className="blog-card-text-container">
-                    <p className="blog-card-category">Science</p>
+                    <p className="blog-card-category">{props.category}</p>
                     <h2 className="blog-card-title">
-                        How do we Calculate the Age of Star?
+                        {props.title}
                     </h2>
-                    <p className="blog-card-author">By Garth Groshans</p>
+                    <p className="blog-card-author">{props.author}</p>
                 </div>
             </div>
         </div>

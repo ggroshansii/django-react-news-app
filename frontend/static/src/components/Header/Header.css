@@ -18,6 +18,8 @@
 .header-category-container {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-around;
 }
 
 .header-category {

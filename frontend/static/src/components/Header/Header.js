@@ -1,7 +1,7 @@
 import "./Header.css";
 import React from "react";
 
-export default function Header() {
+export default function Header(props) {
     const currentDate = new Date();
     const [month, day, year] = [
         currentDate.getMonth(),
@@ -56,9 +56,9 @@ export default function Header() {
                 {month_string}, {day} {year}{" "}
             </h2>
             <div className="header-category-container">
-            <p className="header-category">Categories here....</p>
+            {props.currentArticles.map(article => {
+                return <p className="header-category">#{article.category}</p>})}
             </div>
-
         </div>
     );
 }

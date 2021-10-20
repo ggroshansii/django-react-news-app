@@ -11,6 +11,8 @@ export default function BlogForm() {
         category: "General Science",
     })
 
+    const [preview, setPreview] = useState()
+
     function handleChange(e) {
         let updatedPost = {
             ...post,
@@ -24,9 +26,15 @@ export default function BlogForm() {
         let updatedPost = {
             ...post
         }
-        updatedPost['image'] = e.target.files[0];
+        const file = e.target.files[0];
+        updatedPost['image'] = file;
         setPost(updatedPost)
-        console.log(post)
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setPreview(reader.result);
+        }
+        reader.readAsDataURL(file);
     }
 
     async function handleSubmit(e) {

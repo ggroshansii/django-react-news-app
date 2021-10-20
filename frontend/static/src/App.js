@@ -55,7 +55,6 @@ async function grabArticles() {
     }
 }
 
-
 let html;
 switch (state.page) {
   case 'splash':
@@ -74,7 +73,7 @@ switch (state.page) {
 
   return (
     <div className="App">
-    <Header/>
+    <Header currentArticles={currentArticles}/>
     {html}
     <Footer/>
     </div>
