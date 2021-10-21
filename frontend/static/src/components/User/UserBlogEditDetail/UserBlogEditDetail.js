@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 import "./UserBlogEditDetail.css";
@@ -17,7 +17,7 @@ function UserBlogPostDetail(props) {
         status: "",
     });
 
-
+    const history = useHistory();
     const blogID = props.match.params.id;
 
     useEffect(() => {
@@ -95,6 +95,7 @@ function UserBlogPostDetail(props) {
         } else {
             const data = await response.json()
             console.log("EDIT SUCCESS", data)
+            history.push("/account/blogs/drafts")
         }
     }
 
