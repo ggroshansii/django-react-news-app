@@ -1,8 +1,40 @@
 import React from "react";
 import "./UserBlogPost.css";
 import { NavLink } from "react-router-dom";
+import Cookies from 'js-cookie'
 
-export default function BlogDetailUser(props) {
+export default function UserBlogPost(props) {
+
+    async function submitForReview() {
+
+        let updatedObj = {
+            title: props.title,
+            body: props.body,
+            category: props.category,
+            status: 'SBMT'
+        }
+
+        const options = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookies.get("csrftoken")
+            },
+            body: JSON.stringify(updatedObj)
+        }
+        const response = await fetch(`/api/articles/mydrafts/${props.id}`, options)
+        if (response.ok === false) {
+            console.log("SUBMIT FOR REVIEW FAILED", response);
+        } else {
+            const data = await response.json()
+            console.log("Success for submit for review", data);
+        }
+    }
+
+    function handleClick() {
+
+        submitForReview()
+    }
 
     return (
         <div>
@@ -22,7 +54,7 @@ export default function BlogDetailUser(props) {
                     </div>
                     <div className="ownblog-edit-btn-container">
                       <NavLink to={`/account/blogs/detail/${props.id}`}>  <button className="btn btn-warning ownblog-btn">Edit</button> </NavLink>
-                        <button className="btn btn-success ownblog-btn">
+                        <button className="btn btn-success ownblog-btn" onClick={handleClick}>
                             Final Submit
                         </button>
                     </div>
