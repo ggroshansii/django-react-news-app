@@ -4,11 +4,6 @@ import { NavLink } from "react-router-dom";
 
 export default function BlogDetailUser(props) {
 
-    function handleEditClick(){
-
-    }
-
-
     return (
         <div>
             <div>
@@ -26,7 +21,7 @@ export default function BlogDetailUser(props) {
                         <p className="blog-card-author">{props.author}</p>
                     </div>
                     <div className="ownblog-edit-btn-container">
-                      <NavLink to="/">  <button onClick={handleEditClick} className="btn btn-warning ownblog-btn">Edit</button> </NavLink>
+                      <NavLink to={`/account/blogs/detail/${props.id}`}>  <button className="btn btn-warning ownblog-btn">Edit</button> </NavLink>
                         <button className="btn btn-success ownblog-btn">
                             Final Submit
                         </button>

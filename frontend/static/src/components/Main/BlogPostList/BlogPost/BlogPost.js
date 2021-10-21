@@ -5,12 +5,11 @@ import Cookies from "js-cookie";
 import { NavLink } from 'react-router-dom'
 
 export default function BlogPost(props) {
-    function handleClick() {}
 
     return (
         <div>
             <NavLink to={`blogs/detail/${props.id}`}>
-                <div className="blog-card-container" onClick={handleClick}>
+                <div className="blog-card-container">
                     <div className="blog-card-img-container">
                         <img
                             className="blog-card-img"

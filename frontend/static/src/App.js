@@ -3,8 +3,8 @@ import Cookies from "js-cookie";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import UserBlogList from "./components/User/UserBlogList/UserBlogList";
+import UserBlogEditDetail from "./components/User/UserBlogPostDetail/UserBlogEditDetail";
 import Main from "./components/Main/Main";
-import Splash from "./components/User/Splash/Splash";
 import Profile from "./components/User/Profile/Profile"
 import Registration from "./components/User/Registration/Registration";
 import Login from "./components/User/Login/Login";
@@ -61,10 +61,10 @@ function App() {
                 <Route path="/profile">
                     <Profile />
                 </Route>
-                <Route path="/user/blogs/create">
+                <Route path="/account/blogs/create">
                     <BlogForm />
                 </Route>
-                <Route path="/user/blogs/drafts">
+                <Route path="/account/blogs/drafts">
                     <UserBlogList />
                 </Route>
                 <Route path="/login">
@@ -72,6 +72,9 @@ function App() {
                 </Route>
                 <Route path="/blogs/detail/:id">
                     <BlogDetailReadOnly />
+                </Route>
+                <Route path="/account/blogs/detail/:id">
+                    <UserBlogEditDetail />
                 </Route>
                 <Route path="/">
                     <Main currentBlogs={currentBlogs}/>

@@ -10,6 +10,11 @@ export default function Header(props) {
         currentDate.getFullYear(),
     ];
 
+    const uniqueCategories = new Set()
+    props.currentBlogs.map(blog => {
+        uniqueCategories.add(blog.category)
+    })
+
     let month_string;
     switch (month + 1) {
         case 1:
@@ -73,8 +78,8 @@ export default function Header(props) {
                         </ul>
                     </div>
             <div className="header-category-container">
-            {props.currentBlogs.map(blog => {
-                return <p className="header-category">#{blog.category}</p>})}
+            {[...uniqueCategories].map(category => {
+                return <p className="header-category" >#{category}</p>})}
             </div>
         </div>
     );
