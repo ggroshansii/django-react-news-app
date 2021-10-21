@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Cookies from 'js-cookie'
+import {withRouter,Redirect} from 'react-router-dom'
 
 export default function Registration(props) {
     const [user, setUser] = useState({
@@ -19,7 +20,6 @@ export default function Registration(props) {
         updatedUser[e.target.id] = e.target.value;
         setUser(updatedUser);
     }
-
 
    async function handleSubmit(e) {
         e.preventDefault();
@@ -49,17 +49,14 @@ export default function Registration(props) {
                 } else {
                     const data = await response.json();
                     Cookies.set("Authorization", `Token: ${data.key}`)
-                    console.log("RESPONSE", response)
-                    console.log("DATA", data)
-                    console.log("key", data.key)
-                    props.setState(prevState => ({
-                        ...prevState,
-                        isAuth: true,
-                        page: 'content'
-                    }))
+                    props.setIsAuth(true)
                 }
             }
         }
+
+    if (props.isAuth) {
+        return <Redirect to="/profile"/>
+    }
 
     return (
         <div className="registration-container">

@@ -15,7 +15,7 @@ import { Route, Switch, withRoute, useHistory } from "react-router-dom";
 function App() {
 
     const [isAuth, setIsAuth] = useState();
-    const [currentArticles, setCurrentArticles] = useState([]);
+    const [currentBlogs, setCurrentBlogs] = useState([]);
     const history = useHistory();
 
     useEffect(() => {
@@ -28,38 +28,36 @@ function App() {
                 setIsAuth(true);
                 history.push("/profile");
             }
-            checkAuth();
         };
+        checkAuth();
     }, [history]);
 
     useEffect(() => {
-        grabArticles();
+        grabBlogs();
     }, []);
 
-    async function grabArticles() {
+    async function grabBlogs() {
         const options = {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
+                "X-CSRFToken": Cookies.get('csrftoken')
             },
         };
-        const response = await fetch("/api/articles/");
+        const response = await fetch("/api/articles/", options);
         const data = await response.json();
         if (response.ok === false) {
         } else {
-            setCurrentArticles(data);
+            setCurrentBlogs(data);
         }
     }
 
     return (
         <>
-            <Header currentArticles={currentArticles} />
+            <Header currentBlogs={currentBlogs} />
             <Switch>
-                <Route path="/login">
-                    <Login isAuth={isAuth} setIsAuth={setIsAuth} />
-                </Route>
                 <Route path="/registration">
-                    <Registration />
+                    <Registration isAuth={isAuth} setIsAuth={setIsAuth} />
                 </Route>
                 <Route path="/profile">
                     <Profile />
@@ -69,6 +67,12 @@ function App() {
                 </Route>
                 <Route path="/blogs/drafts">
                     <OwnBlogs />
+                </Route>
+                <Route path="/login">
+                    <Login isAuth={isAuth} setIsAuth={setIsAuth} />
+                </Route>
+                <Route path="/">
+                    <Main currentBlogs={currentBlogs}/>
                 </Route>
             </Switch>
             <Footer />

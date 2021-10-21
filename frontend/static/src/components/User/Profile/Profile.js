@@ -85,6 +85,7 @@ function Profile() {
 
             </form>
             <div>
+               <NavLink to="/blogs/create"><button>Blog Submit Form</button></NavLink>
                <NavLink to="/blogs/drafts"><button>See My Drafts</button></NavLink>
             </div>
         </div>

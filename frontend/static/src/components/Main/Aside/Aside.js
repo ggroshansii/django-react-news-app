@@ -7,9 +7,9 @@ export default function Aside(props) {
     return (
         <div>
             <div className="aside-container">
-                <h2 className="aside-heading">Popular Posts</h2>
-                {props.currentArticles.map(article => {
-                    return <AsideItem {...article}/> 
+                <h2 className="aside-heading"></h2>
+                {props.currentBlogs.map(blog => {
+                    return <AsideItem {...blog}/> 
                 })}
             </div>
         </div>

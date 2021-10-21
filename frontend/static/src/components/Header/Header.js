@@ -56,8 +56,8 @@ export default function Header(props) {
             <h2 className="header-date">
                 {month_string}, {day} {year}{" "}
             </h2>
-            <div className="collpase navbar-collapse" id="navbarResponsive">
-                        <ul className="navbar-nav ml-auto">
+            <div className="collpase navbar-collapse nav-container" id="navbarResponsive">
+                        <ul className="navbar-nav">
                             <li className="nav-item">
                                 <NavLink to="/">Home</NavLink>
                             </li>
@@ -73,8 +73,8 @@ export default function Header(props) {
                         </ul>
                     </div>
             <div className="header-category-container">
-            {props.currentArticles.map(article => {
-                return <p className="header-category">#{article.category}</p>})}
+            {props.currentBlogs.map(blog => {
+                return <p className="header-category">#{blog.category}</p>})}
             </div>
         </div>
     );

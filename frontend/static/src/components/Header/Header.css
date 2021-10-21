@@ -2,6 +2,7 @@
 
 .header-container {
     font-family: 'Playfair Display', serif; 
+    text-align: center;
 
 }
 
@@ -24,4 +25,8 @@
 
 .header-category {
     margin: 0.25rem 0rem;
+}
+
+.nav-bar-container{
+    display: flex;
 }

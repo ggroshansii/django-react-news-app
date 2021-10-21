@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import Cookies from 'js-cookie'
-import { withRouter } from 'react-router'
+import { Redirect, withRouter } from 'react-router'
 
 function Login(props) {
 
@@ -34,8 +34,11 @@ function Login(props) {
             const data = await response.json()
             Cookies.set("Authorization", `Token ${data.key}`)
             props.setIsAuth(true);
-            props.history.push('/profile')
         }
+    }
+
+    if (props.isAuth) {
+        return <Redirect to="/profile"/>
     }
 
     return (
@@ -55,4 +58,4 @@ function Login(props) {
     )
 }
 
-export default withRouter(Login)
+export default Login
