@@ -5,7 +5,7 @@ from rest_framework import permissions
 from .serializers import ArticleSerializer
 from .models import Article
 from rest_framework.permissions import IsAdminUser, IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser
-from .permissions import IsOwnerOrReadOnly
+from .permissions import IsOwnerOrReadOnly, IsOwner
 
 # Create your views here.
 
@@ -50,6 +50,12 @@ class UserArticleListView (generics.ListCreateAPIView):
 class ReadOnlyArticleDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
+    permission_classes = (IsOwnerOrReadOnly,)
+
+class UserArticleDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    permission_classes = (IsOwner,)
 
 
 

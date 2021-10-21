@@ -32,7 +32,7 @@ function UserBlogPostDetail(props) {
                 "X-CSRFToken": Cookies.get("csrftoken"),
             },
         };
-        const response = await fetch(`/api/articles/${blogID}`, options);
+        const response = await fetch(`/api/articles/mydrafts/${blogID}`, options);
         if (response.ok === false) {
             console.log("Detail Failed", response);
         } else {
@@ -43,8 +43,8 @@ function UserBlogPostDetail(props) {
                 author: data.author,
                 title: data.title,
                 body: data.body,
+                image: "",
                 category: data.category,
-                image: data.image,
                 status: data.status,
             });
         }
@@ -54,10 +54,49 @@ function UserBlogPostDetail(props) {
         let updatedBlogObj = {...blogObj}
         updatedBlogObj[e.target.id] = e.target.value;
         setBlogObj(updatedBlogObj)
+        console.log(blogObj.image)
     }
 
-    function handleImage() {}
-    function handleSubmit() {}
+    function handleImage(e) {
+        const file = e.target.files[0]
+        let updatedBlogObj = {...blogObj}
+        updatedBlogObj[e.target.id] = file
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+    }
+
+
+
+    async function handleSubmit(e) {
+        e.preventDefault()
+        const formData = new FormData ();
+        formData.append('id', blogObj.id)
+        formData.append('author', blogObj.author)
+        formData.append('title', blogObj.title)
+        formData.append('body', blogObj.body)
+        formData.append('category', blogObj.category)
+        formData.append('status', blogObj.status)
+
+        if (blogObj.image !== "") {
+            formData.append('image', blogObj.image)
+        }
+
+        const options = {
+            method: 'PUT',
+            headers: {
+                'X-CSRFToken': Cookies.get('csrftoken')
+            },
+            body: formData,
+        }
+        const response = await fetch(`/api/articles/mydrafts/${blogID}`, options)
+        if (response.ok === false) {
+            console.log("EDIT POST FAILED", response)
+        } else {
+            const data = await response.json()
+            console.log("EDIT SUCCESS", data)
+        }
+    }
 
     return (
         <div className="edit-post-form-container">
@@ -93,7 +132,6 @@ function UserBlogPostDetail(props) {
                         id="image"
                         onChange={handleImage}
                         name="image"
-                        // value={blogObj.image}
                     />
                 </div>
                 <div className="form-group">

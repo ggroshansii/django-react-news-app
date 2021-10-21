@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import UserBlogList from "./components/User/UserBlogList/UserBlogList";
-import UserBlogEditDetail from "./components/User/UserBlogPostDetail/UserBlogEditDetail";
+import UserBlogEditDetail from "./components/User/UserBlogEditDetail/UserBlogEditDetail";
 import Main from "./components/Main/Main";
 import Profile from "./components/User/Profile/Profile"
 import Registration from "./components/User/Registration/Registration";
