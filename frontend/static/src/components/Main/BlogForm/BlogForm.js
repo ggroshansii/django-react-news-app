@@ -125,7 +125,7 @@ export default function BlogForm() {
                         <option value="General Tectonics">General Tectonics</option>
                     </select>
                 </div>
-                <button type="submit">Submit New Draft</button>
+                <button type="submit" className="btn btn-primary">Submit New Draft</button>
             </form>
         </div>
     );

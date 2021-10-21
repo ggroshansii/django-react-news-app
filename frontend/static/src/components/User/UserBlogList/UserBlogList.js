@@ -1,18 +1,18 @@
 import Cookies from 'js-cookie'
 import React from 'react'
 import { useState, useEffect } from 'react'
-import OwnBlog from '../OwnBlog/OwnBlog'
+import UserBlogPost from './UserBlogPost/UserBlogPost'
+import './UserBlogList.css'
 
 export default function OwnBlogs() {
 
 const [OwnBlogsState, setOwnBlogsState] = useState([])
 
 useEffect(() => {
-    grabOwnArticles()
-   
+    grabOwnBlogs()
 }, [])
 
-async function grabOwnArticles(){
+async function grabOwnBlogs(){
     const options = {
         method: 'GET',
         headers: {
@@ -20,7 +20,7 @@ async function grabOwnArticles(){
             'X-CSRFToken': Cookies.get('csrftoken')
         }
     }
-    const response = await fetch("/api/articles/", options)
+    const response = await fetch("/api/articles/mydrafts/", options)
     if (response.ok === false) {
         console.log("FAILED", response)
     } else {
@@ -31,9 +31,9 @@ async function grabOwnArticles(){
 
 
     return (
-        <div>
+        <div className="ownblogs-list-container">
             {OwnBlogsState.map(blog => {
-                return <OwnBlog {...blog} />
+                return <UserBlogPost {...blog} />
             })}
         </div>
     )
