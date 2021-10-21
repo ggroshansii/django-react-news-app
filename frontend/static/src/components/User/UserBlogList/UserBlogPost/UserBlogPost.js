@@ -1,9 +1,9 @@
 import React from "react";
 import "./UserBlogPost.css";
-import { NavLink } from "react-router-dom";
+import {withRouter } from "react-router-dom";
 import Cookies from 'js-cookie'
 
-export default function UserBlogPost(props) {
+function UserBlogPost(props) {
 
     async function submitForReview() {
 
@@ -31,9 +31,14 @@ export default function UserBlogPost(props) {
         }
     }
 
-    function handleClick() {
+    function handleEditClick() {
+        console.log("hey")
+        props.history.push(`/account/blogs/detail/${props.id}`)
+    }
 
+    function handleFinalSubmit() {
         submitForReview()
+        props.history.push('/account/blogs/drafts/')
     }
 
     return (
@@ -53,8 +58,8 @@ export default function UserBlogPost(props) {
                         <p className="blog-card-author">{props.author}</p>
                     </div>
                     <div className="ownblog-edit-btn-container">
-                      <NavLink to={`/account/blogs/detail/${props.id}`}>  <button className="btn btn-warning ownblog-btn">Edit</button> </NavLink>
-                        <button className="btn btn-success ownblog-btn" onClick={handleClick}>
+                      <button className="btn btn-warning ownblog-btn" onClick={handleEditClick}>Edit</button>
+                        <button className="btn btn-success ownblog-btn" onClick={handleFinalSubmit}>
                             Final Submit
                         </button>
                     </div>
@@ -63,3 +68,5 @@ export default function UserBlogPost(props) {
         </div>
     );
 }
+
+export default withRouter(UserBlogPost)
