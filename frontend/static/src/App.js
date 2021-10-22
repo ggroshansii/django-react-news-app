@@ -76,25 +76,55 @@ function App() {
         }
     }
 
-    return (
-        <>
-            <Header currentBlogs={currentBlogs} isAuth={isAuth}/>
-            <Switch>
-                <Route path="/registration">
-                    <Registration isAuth={isAuth} setIsAuth={setIsAuth} />
+    let loginRegisterPath;
+    let profilePath;
+    let adminPath;
+
+    if (isAuth === true) {
+        if (isAdmin === true) {
+            adminPath = (
+                <>
+                <Route path="/admin/portal">
+                    <AdminPortal />
                 </Route>
+                </>
+            );
+        } else {
+            profilePath = (
                 <Route path="/profile">
                     <Profile />
                 </Route>
+            );
+        }
+    } else {
+        loginRegisterPath = (
+            <>
+                <Route path="/login">
+                    <Login isAuth={isAuth} setIsAuth={setIsAuth} />
+                </Route>
+                <Route path="/registration">
+                    <Registration isAuth={isAuth} setIsAuth={setIsAuth} />
+                </Route>
+            </>
+        );
+    }
+
+    return (
+        <>
+            <Header currentBlogs={currentBlogs} isAuth={isAuth} isAdmin={isAdmin}/>
+            <Switch>
+
+
+                {adminPath}
+                {profilePath}
+                {loginRegisterPath}
                 <Route path="/account/blogs/create">
                     <BlogForm />
                 </Route>
                 <Route path="/account/blogs/drafts">
                     <UserBlogList />
                 </Route>
-                <Route path="/login">
-                    <Login isAuth={isAuth} setIsAuth={setIsAuth} />
-                </Route>
+
                 <Route path="/blogs/detail/:id">
                     <BlogDetailReadOnly />
                 </Route>
@@ -106,7 +136,6 @@ function App() {
                 </Route>
             </Switch>
             <Footer />
-
         </>
     );
 }

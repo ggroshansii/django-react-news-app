@@ -55,9 +55,28 @@ export default function Header(props) {
             break;
     }
 
-    let loginRegister;
-    if (props.isAuth === false) {
-        loginRegister = (
+    let loginRegisterLink;
+    let profileLink;
+    let adminLink;
+
+    if (props.isAuth === true) {
+        if (props.isAdmin === true) {
+            adminLink = (
+                <>
+                    <li className="nav-item">
+                        <NavLink to="/admin/portal">Admin Portal</NavLink>
+                    </li>
+                </>
+            );
+        } else {
+            profileLink = (
+                <li className="nav-item">
+                    <NavLink to="/profile">Profile</NavLink>
+                </li>
+            );
+        }
+    } else {
+        loginRegisterLink = (
             <>
                 <li className="nav-item">
                     <NavLink to="/login">Login</NavLink>
@@ -83,10 +102,9 @@ export default function Header(props) {
                     <li className="nav-item">
                         <NavLink to="/">Home</NavLink>
                     </li>
-                    <li className="nav-item">
-                        <NavLink to="/profile">Profile</NavLink>
-                    </li>
-                    {loginRegister}
+                    {profileLink}
+                    {loginRegisterLink}
+                    {adminLink}
                 </ul>
             </div>
             <div className="header-category-container">
