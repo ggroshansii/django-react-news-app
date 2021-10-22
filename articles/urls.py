@@ -9,6 +9,6 @@ urlpatterns = [
     path('admin/PBLH/', views.AdminPublishedArticleListView.as_view()),
     path('admin/ALL/', views.AdminAllArticleListView.as_view()),
     path("mydrafts/", views.UserArticleListView.as_view()),
-    path('<int:pk>', views.ReadOnlyArticleDetailAPIView.as_view()),
-    path('mydrafts/<int:pk>', views.UserArticleDetailAPIView.as_view()),
+    path('<int:pk>/', views.ReadOnlyArticleDetailAPIView.as_view()),
+    path('mydrafts/<int:pk>/', views.UserArticleDetailAPIView.as_view()),
 ]

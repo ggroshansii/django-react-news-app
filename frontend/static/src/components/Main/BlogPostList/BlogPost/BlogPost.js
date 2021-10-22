@@ -8,7 +8,7 @@ export default function BlogPost(props) {
 
     return (
         <div>
-            <NavLink to={`blogs/detail/${props.id}`}>
+            <NavLink to={`/blogs/detail/${props.id}`}>
                 <div className="blog-card-container">
                     <div className="blog-card-img-container">
                         <img
