@@ -10,6 +10,8 @@ export default function Header(props) {
         currentDate.getFullYear(),
     ];
 
+    console.log("header fired", props.isAuth)
+
     const uniqueCategories = new Set();
     props.currentBlogs.map((blog) => {
         uniqueCategories.add(blog.category);

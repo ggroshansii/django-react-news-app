@@ -7,17 +7,14 @@ import "./AdminBlogList.css";
 
 export default function AdminBlogList() {
     const [adminArticles, setAdminArtcles] = useState([]);
-    const [categorySelection, setCategorySelection] = useState("");
+    const [categorySelection, setCategorySelection] = useState("ALL");
 
-    useEffect(() => {
-        grabAdminArticles("ALL");
-    }, []);
 
     useEffect(() => {
         grabAdminArticles(categorySelection);
     }, [categorySelection]);
 
-    async function grabAdminArticles(category) {
+    async function grabAdminArticles(category = "ALL") {
         const options = {
             method: "GET",
             headers: {
@@ -25,8 +22,7 @@ export default function AdminBlogList() {
                 "X-CSRFToken": Cookies.get("csrftoken"),
             },
         };
-        const response = await fetch(
-            `/api/articles/admin/${category}`,
+        const response = await fetch(`/api/articles/admin/${category}`,
             options
         );
         if (response.ok === false) {

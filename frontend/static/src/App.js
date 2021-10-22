@@ -23,7 +23,7 @@ function App() {
 
     useEffect(() => {
         const checkAuth = async () => {
-            const response = await fetch("rest-auth/user/");
+            const response = await fetch("/rest-auth/user/");
             if (response.ok === false) {
                 setIsAuth(false);
             } else {
