@@ -78,7 +78,7 @@ function App() {
 
     return (
         <>
-            <Header currentBlogs={currentBlogs} />
+            <Header currentBlogs={currentBlogs} isAuth={isAuth}/>
             <Switch>
                 <Route path="/registration">
                     <Registration isAuth={isAuth} setIsAuth={setIsAuth} />

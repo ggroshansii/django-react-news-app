@@ -10,10 +10,10 @@ export default function Header(props) {
         currentDate.getFullYear(),
     ];
 
-    const uniqueCategories = new Set()
-    props.currentBlogs.map(blog => {
-        uniqueCategories.add(blog.category)
-    })
+    const uniqueCategories = new Set();
+    props.currentBlogs.map((blog) => {
+        uniqueCategories.add(blog.category);
+    });
 
     let month_string;
     switch (month + 1) {
@@ -55,31 +55,44 @@ export default function Header(props) {
             break;
     }
 
+    let loginRegister;
+    if (props.isAuth === false) {
+        loginRegister = (
+            <>
+                <li className="nav-item">
+                    <NavLink to="/login">Login</NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink to="/registration">Registration</NavLink>
+                </li>
+            </>
+        );
+    }
+
     return (
         <div className="header-container">
             <h1 className="newspaper-name">The Gartholomew Gazette</h1>
             <h2 className="header-date">
                 {month_string}, {day} {year}{" "}
             </h2>
-            <div className="collpase navbar-collapse nav-container" id="navbarResponsive">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <NavLink to="/">Home</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to="/profile">Profile</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to="/login">Login</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to="/registration">Registration</NavLink>
-                            </li>
-                        </ul>
-                    </div>
+            <div
+                className="collpase navbar-collapse nav-container"
+                id="navbarResponsive"
+            >
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <NavLink to="/">Home</NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink to="/profile">Profile</NavLink>
+                    </li>
+                    {loginRegister}
+                </ul>
+            </div>
             <div className="header-category-container">
-            {[...uniqueCategories].map(category => {
-                return <p className="header-category" >#{category}</p>})}
+                {[...uniqueCategories].map((category) => {
+                    return <p className="header-category">#{category}</p>;
+                })}
             </div>
         </div>
     );
