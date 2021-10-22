@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from .serializers import ProfileSerializer
 from .models import Profile
 
+
 # Create your views here.
 
 class ProfileCreateAPIView(generics.ListCreateAPIView):
@@ -17,3 +18,4 @@ class ProfileCreateAPIView(generics.ListCreateAPIView):
         else:
             # import pdb; pdb.set_trace();
             return Response(data={'detail': 'This user already has a profile'})
+

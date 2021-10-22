@@ -18,6 +18,7 @@ function App() {
     const [isAuth, setIsAuth] = useState();
     const [currentBlogs, setCurrentBlogs] = useState([]);
     const history = useHistory();    
+    const [isAdmin, setIsAdmin] = useState(false)
 
     useEffect(() => {
         const checkAuth = async () => {
@@ -35,6 +36,10 @@ function App() {
         grabBlogs();
     }, []);
 
+    useEffect(()=> {
+        grabUserDetails()
+    }, [isAuth])
+
     async function grabBlogs() {
         const options = {
             method: "GET",
@@ -48,6 +53,26 @@ function App() {
         if (response.ok === false) {
         } else {
             setCurrentBlogs(data);
+        }
+    }
+
+    async function grabUserDetails() {
+        let options = {
+            method: "GET",
+            header: {
+                "Content-Type": 'application/json',
+                "X-CSRFToken": 'csrftoken'
+            }
+        }
+        let response = await fetch('/rest-auth/user/', options)
+        if (response.ok === false) {
+            console.log("FAILED", response)
+        } else {
+            const data = await response.json()
+            console.log("success grabbing details", data);
+            if (data.is_staff === true || data.is_superuser === true) {
+                setIsAdmin(true)
+            }
         }
     }
 
