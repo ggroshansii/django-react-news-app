@@ -12,7 +12,7 @@ import BlogForm from './components/Main/BlogForm/BlogForm';
 import { useState, useEffect } from "react";
 import { Route, Switch, withRoute, useHistory } from "react-router-dom";
 import BlogDetailReadOnly from "./components/Main/BlogDetail/BlogDetailReadOnly";
-import AdminPortal from "./components/User/AdminPortal/AdminPortal";
+import AdminBlogList from "./components/User/AdminBlogList/AdminBlogList";
 
 function App() {
 
@@ -90,7 +90,7 @@ function App() {
                     <Profile />
                 </Route>
                 <Route path="/admin/portal">
-                    <AdminPortal/>
+                    <AdminBlogList/>
                 </Route>
                 <Route path="/account/blogs/create">
                     <BlogForm />

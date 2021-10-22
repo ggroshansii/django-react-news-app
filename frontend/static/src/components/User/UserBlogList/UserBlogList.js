@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import UserBlogPost from './UserBlogPost/UserBlogPost'
 import './UserBlogList.css'
 
-export default function OwnBlogs() {
+export default function UserBlogList() {
 
 const [OwnBlogsState, setOwnBlogsState] = useState([])
 

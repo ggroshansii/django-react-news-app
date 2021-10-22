@@ -34,13 +34,7 @@ class UserArticleListView (generics.ListCreateAPIView):
         author = self.request.user
         serializer.save(author=author)
 
-class AdminArticleListView (generics.ListCreateAPIView):
-    serializer_class = ArticleSerializer
-    queryset = Article.objects.all()
-    permissions_classes = (IsAdminUser)
 
-    def get_queryset(self):
-        return Article.objects.filter(status='SBMT')
 
     # def perform_create(self, serializer):
     #     author = self.request.user
@@ -55,6 +49,47 @@ class UserArticleDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     permission_classes = (IsOwner,)
+
+class AdminSubmittedArticleListView (generics.ListCreateAPIView):
+    serializer_class = ArticleSerializer
+    queryset = Article.objects.all()
+    permissions_classes = (IsAdminUser)
+
+    def get_queryset(self):
+        return Article.objects.filter(status='SBMT')
+
+        
+class AdminRejectedArticleListView (generics.ListCreateAPIView):
+    serializer_class = ArticleSerializer
+    queryset = Article.objects.all()
+    permissions_classes = (IsAdminUser)
+
+    def get_queryset(self):
+        return Article.objects.filter(status='RJT')
+
+
+class AdminPublishedArticleListView (generics.ListCreateAPIView):
+    serializer_class = ArticleSerializer
+    queryset = Article.objects.all()
+    permissions_classes = (IsAdminUser)
+
+    def get_queryset(self):
+        return Article.objects.filter(status='PBLH')
+
+
+class AdminDraftArticleListView (generics.ListCreateAPIView):
+    serializer_class = ArticleSerializer
+    queryset = Article.objects.all()
+    permissions_classes = (IsAdminUser)
+
+    def get_queryset(self):
+        return Article.objects.filter(status='DFT')
+
+
+class AdminAllArticleListView (generics.ListCreateAPIView):
+    serializer_class = ArticleSerializer
+    queryset = Article.objects.all()
+    permissions_classes = (IsAdminUser)
 
 
 
