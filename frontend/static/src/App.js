@@ -12,6 +12,7 @@ import BlogForm from './components/Main/BlogForm/BlogForm';
 import { useState, useEffect } from "react";
 import { Route, Switch, withRoute, useHistory } from "react-router-dom";
 import BlogDetailReadOnly from "./components/Main/BlogDetail/BlogDetailReadOnly";
+import AdminPortal from "./components/User/AdminPortal/AdminPortal";
 
 function App() {
 
@@ -76,55 +77,30 @@ function App() {
         }
     }
 
-    let loginRegisterPath;
-    let profilePath;
-    let adminPath;
-
-    if (isAuth === true) {
-        if (isAdmin === true) {
-            adminPath = (
-                <>
-                <Route path="/admin/portal">
-                    <AdminPortal />
-                </Route>
-                </>
-            );
-        } else {
-            profilePath = (
-                <Route path="/profile">
-                    <Profile />
-                </Route>
-            );
-        }
-    } else {
-        loginRegisterPath = (
-            <>
-                <Route path="/login">
-                    <Login isAuth={isAuth} setIsAuth={setIsAuth} />
-                </Route>
-                <Route path="/registration">
-                    <Registration isAuth={isAuth} setIsAuth={setIsAuth} />
-                </Route>
-            </>
-        );
-    }
+    
 
     return (
         <>
             <Header currentBlogs={currentBlogs} isAuth={isAuth} isAdmin={isAdmin}/>
             <Switch>
-
-
-                {adminPath}
-                {profilePath}
-                {loginRegisterPath}
+                <Route path="/registration">
+                    <Registration isAuth={isAuth} setIsAuth={setIsAuth} />
+                </Route>
+                <Route path="/profile">
+                    <Profile />
+                </Route>
+                <Route path="/admin/portal">
+                    <AdminPortal/>
+                </Route>
                 <Route path="/account/blogs/create">
                     <BlogForm />
                 </Route>
                 <Route path="/account/blogs/drafts">
                     <UserBlogList />
                 </Route>
-
+                <Route path="/login">
+                    <Login isAuth={isAuth} setIsAuth={setIsAuth} />
+                </Route>
                 <Route path="/blogs/detail/:id">
                     <BlogDetailReadOnly />
                 </Route>
