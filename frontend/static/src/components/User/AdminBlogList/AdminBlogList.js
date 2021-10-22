@@ -37,10 +37,8 @@ export default function AdminBlogList() {
         }
     }
 
-    function handleOptionChange(e) {
-        setCategorySelection(e.target.options[e.target.selectedIndex].value);
-        e.preventDefault();
-        grabAdminArticles(categorySelection);
+   function handleOptionChange(e) {
+        setCategorySelection(e.target.value);
     }
 
     return (
@@ -53,6 +51,7 @@ export default function AdminBlogList() {
                         id="status"
                         className="form-select"
                         onChange={handleOptionChange}
+                        value={categorySelection}
                     >
                         <option value="ALL" selected>
                             All
@@ -62,9 +61,6 @@ export default function AdminBlogList() {
                         <option value="PBLH">Published</option>
                         <option value="RJT">Rejected</option>
                     </select>
-                    <button type="submit" className="btn btn-primary">
-                        Get Articles!
-                    </button>
                 </div>
             </form>
 
