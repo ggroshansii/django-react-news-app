@@ -31,7 +31,7 @@ function BlogDetailReadOnly(props) {
                 "X-CSRFToken": Cookies.get("csrftoken"),
             },
         };
-        const response = await fetch(`/api/articles/${blogID}`, options);
+        const response = await fetch(`django-react-news-app-ggii.herokuapp.com/api/articles/${blogID}/`, options);
         if (response.ok === false) {
             console.log("Detail Failed", response);
         } else {
