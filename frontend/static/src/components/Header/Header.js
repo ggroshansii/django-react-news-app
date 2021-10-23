@@ -112,6 +112,7 @@ export default function Header(props) {
                 </ul>
             </div>
             <div className="header-category-container">
+                <p className="header-category" value={null} onClick={handleClick}>All</p>
                 {[...uniqueCategories].map((category) => {
                     return <p className="header-category" value={category} onClick={handleClick}>{category}</p>;
                 })}

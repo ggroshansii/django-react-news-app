@@ -79,15 +79,14 @@ function App() {
     }
 
     function filteredBlogs() {
-        if (filter) {
+        if (filter && filter !== "All") {
             return currentBlogs.filter(blog => blog.category === filter)
-            
         } else {
             return currentBlogs
         }
     }
 
-    
+    console.log('fiter', filter)
 
     console.log(filteredBlogs())
 

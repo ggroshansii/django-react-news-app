@@ -20,6 +20,7 @@
     border-bottom: 1px solid black;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .header-category {
@@ -30,6 +31,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    
 }
 
 .nav-link {
