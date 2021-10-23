@@ -35,8 +35,9 @@ export default function Header(props) {
             props.setIsAuth(false)
             
          }
-         <Redirect path="/" />
         }
+
+
 
     const uniqueCategories = new Set();
     props.currentBlogs.map((blog) => {

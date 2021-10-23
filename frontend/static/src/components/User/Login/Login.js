@@ -38,7 +38,7 @@ function Login(props) {
     }
 
     if (props.isAuth) {
-        return <Redirect to="/profile"/>
+        return <Redirect to="/"/>
     }
 
     return (

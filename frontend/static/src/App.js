@@ -119,7 +119,7 @@ function App() {
                     <UserBlogList />
                 </Route>
                 <Route path="/login">
-                    <Login isAuth={isAuth} setIsAuth={setIsAuth} />
+                    <Login isAuth={isAuth} setIsAuth={setIsAuth}/>
                 </Route>
                 <Route path="/logout">
                     <Login isAuth={isAuth} setIsAuth={setIsAuth} />
