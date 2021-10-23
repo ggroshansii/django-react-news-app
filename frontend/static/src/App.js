@@ -5,23 +5,22 @@ import Footer from "./components/Footer/Footer";
 import UserBlogList from "./components/User/UserBlogList/UserBlogList";
 import UserBlogEditDetail from "./components/User/UserBlogEditDetail/UserBlogEditDetail";
 import Main from "./components/Main/Main";
-import Profile from "./components/User/Profile/Profile"
+import Profile from "./components/User/Profile/Profile";
 import Registration from "./components/User/Registration/Registration";
 import Login from "./components/User/Login/Login";
-import Logout from "./components/User/Logout/Logout"
-import BlogForm from './components/Main/BlogForm/BlogForm';
+import Logout from "./components/User/Logout/Logout";
+import BlogForm from "./components/Main/BlogForm/BlogForm";
 import { useState, useEffect } from "react";
 import { Route, Switch, withRoute, useHistory } from "react-router-dom";
 import BlogDetailReadOnly from "./components/Main/BlogDetail/BlogDetailReadOnly";
 import AdminBlogList from "./components/User/AdminBlogList/AdminBlogList";
 
 function App() {
-
     const [isAuth, setIsAuth] = useState();
     const [currentBlogs, setCurrentBlogs] = useState([]);
-    const history = useHistory();    
-    const [isAdmin, setIsAdmin] = useState(false)
-    const [filter, setFilter] = useState(null)
+    const history = useHistory();
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [filter, setFilter] = useState(null);
 
     useEffect(() => {
         const checkAuth = async () => {
@@ -39,16 +38,16 @@ function App() {
         grabBlogs();
     }, []);
 
-    useEffect(()=> {
-        grabUserDetails()
-    }, [isAuth])
+    useEffect(() => {
+        grabUserDetails();
+    }, [isAuth]);
 
     async function grabBlogs() {
         const options = {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "X-CSRFToken": Cookies.get('csrftoken')
+                "X-CSRFToken": Cookies.get("csrftoken"),
             },
         };
         const response = await fetch("/api/articles/", options);
@@ -63,39 +62,45 @@ function App() {
         let options = {
             method: "GET",
             header: {
-                "Content-Type": 'application/json',
-                "X-CSRFToken": 'csrftoken'
-            }
-        }
-        let response = await fetch('/rest-auth/user/', options)
+                "Content-Type": "application/json",
+                "X-CSRFToken": "csrftoken",
+            },
+        };
+        let response = await fetch("/rest-auth/user/", options);
         if (response.ok === false) {
-            console.log("FAILED", response)
+            console.log("FAILED", response);
         } else {
-            const data = await response.json()
+            const data = await response.json();
             console.log("success grabbing details", data);
             if (data.is_staff === true || data.is_superuser === true) {
-                setIsAdmin(true)
+                setIsAdmin(true);
             }
         }
     }
 
     function filteredBlogs() {
         if (filter && filter !== "All") {
-            return currentBlogs.filter(blog => blog.category === filter)
+            return currentBlogs.filter((blog) => blog.category === filter);
         } else {
-            return currentBlogs
+            return currentBlogs;
         }
     }
 
-    console.log('fiter', filter)
+    console.log("fiter", filter);
 
-    console.log(filteredBlogs())
+    console.log(filteredBlogs());
 
-    console.log("blogs", currentBlogs)
+    console.log("blogs", currentBlogs);
 
     return (
         <>
-            <Header currentBlogs={currentBlogs} isAuth={isAuth} isAdmin={isAdmin} setFilter={setFilter} setIsAuth={setIsAuth}/>
+            <Header
+                currentBlogs={currentBlogs}
+                isAuth={isAuth}
+                isAdmin={isAdmin}
+                setFilter={setFilter}
+                setIsAuth={setIsAuth}
+            />
             <Switch>
                 <Route path="/registration">
                     <Registration isAuth={isAuth} setIsAuth={setIsAuth} />
@@ -104,7 +109,7 @@ function App() {
                     <Profile />
                 </Route>
                 <Route path="/admin/portal">
-                    <AdminBlogList/>
+                    <AdminBlogList />
                 </Route>
                 <Route path="/account/blogs/create">
                     <BlogForm />
@@ -116,7 +121,7 @@ function App() {
                     <Login isAuth={isAuth} setIsAuth={setIsAuth} />
                 </Route>
                 <Route path="/logout">
-                    <Logout isAuth={isAuth} setIsAuth={setIsAuth} />
+                    <Login isAuth={isAuth} setIsAuth={setIsAuth} />
                 </Route>
                 <Route path="/blogs/detail/:id">
                     <BlogDetailReadOnly />
@@ -125,7 +130,10 @@ function App() {
                     <UserBlogEditDetail />
                 </Route>
                 <Route path="/">
-                    <Main filteredBlogs={filteredBlogs} currentBlogs={currentBlogs}/>
+                    <Main
+                        filteredBlogs={filteredBlogs}
+                        currentBlogs={currentBlogs}
+                    />
                 </Route>
             </Switch>
             <Footer />

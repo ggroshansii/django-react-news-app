@@ -1,11 +1,10 @@
 import React from "react";
 
-import {withRouter } from "react-router-dom";
+import {withRouter, Redirect } from "react-router-dom";
 import Cookies from 'js-cookie'
 
 function AdminBlogPost(props) {
 
-console.log("props", props)
 
     async function handleRejectClick() {
         let updatedObj = {
@@ -23,7 +22,7 @@ console.log("props", props)
             },
             body: JSON.stringify(updatedObj)
         }
-        const response = await fetch(`/api/articles/mydrafts/${props.id}/`, options)
+        const response = await fetch(`/api/articles/admin/ALL/${props.id}/`, options)
         if (response.ok === false) {
             console.log("REJECTED FAILED", response);
         } else {
@@ -48,7 +47,7 @@ console.log("props", props)
             },
             body: JSON.stringify(updatedObj)
         }
-        const response = await fetch(`/api/articles/mydrafts/${props.id}/`, options)
+        const response = await fetch(`/api/articles/admin/ALL/${props.id}/`, options)
         if (response.ok === false) {
             console.log("PUBLISHED FAILED", response);
         } else {
