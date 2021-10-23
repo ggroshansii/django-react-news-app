@@ -5,38 +5,56 @@ import Cookies from 'js-cookie'
 
 function AdminBlogPost(props) {
 
-    // async function submitForReview() {
+console.log("props", props)
 
-    //     let updatedObj = {
-    //         title: props.title,
-    //         body: props.body,
-    //         category: props.category,
-    //         status: 'SBMT'
-    //     }
+    async function handleRejectClick() {
+        let updatedObj = {
+            title: props.title,
+            body: props.body,
+            category: props.category,
+            status: 'RJT'
+        }
 
-    //     const options = {
-    //         method: "PUT",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "X-CSRFToken": Cookies.get("csrftoken")
-    //         },
-    //         body: JSON.stringify(updatedObj)
-    //     }
-    //     const response = await fetch(`/api/articles/mydrafts/${props.id}`, options)
-    //     if (response.ok === false) {
-    //         console.log("SUBMIT FOR REVIEW FAILED", response);
-    //     } else {
-    //         const data = await response.json()
-    //         console.log("Success for submit for review", data);
-    //     }
-    // }
-
-    function handleRejectClick() {
-
+        const options = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookies.get("csrftoken")
+            },
+            body: JSON.stringify(updatedObj)
+        }
+        const response = await fetch(`/api/articles/mydrafts/${props.id}/`, options)
+        if (response.ok === false) {
+            console.log("REJECTED FAILED", response);
+        } else {
+            const data = await response.json()
+            console.log("SUCCESS REJECTED", data);
+        }
     }
 
-    function handlePublishSubmit() {
+    async function handlePublishClick() {
+        let updatedObj = {
+            title: props.title,
+            body: props.body,
+            category: props.category,
+            status: 'PBLH'
+        }
 
+        const options = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookies.get("csrftoken")
+            },
+            body: JSON.stringify(updatedObj)
+        }
+        const response = await fetch(`/api/articles/mydrafts/${props.id}/`, options)
+        if (response.ok === false) {
+            console.log("PUBLISHED FAILED", response);
+        } else {
+            const data = await response.json()
+            console.log("SUCCESS PUBLISHED", data);
+        }
     }
 
     return (
@@ -57,7 +75,7 @@ function AdminBlogPost(props) {
                     </div>
                     <div className="ownblog-edit-btn-container">
                       <button className="btn btn-danger ownblog-btn" onClick={handleRejectClick}>Reject</button>
-                        <button className="btn btn-success ownblog-btn" onClick={handlePublishSubmit}>
+                        <button className="btn btn-success ownblog-btn" onClick={handlePublishClick}>
                             Publish
                         </button>
                     </div>
