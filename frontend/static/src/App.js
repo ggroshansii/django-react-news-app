@@ -20,6 +20,10 @@ function App() {
     const history = useHistory();
     const [isAdmin, setIsAdmin] = useState(false);
     const [filter, setFilter] = useState(null);
+    const [userDetails, setUserDetails] = useState({
+        username: "",
+        email: "",
+    })
 
     useEffect(() => {
         const checkAuth = async () => {
@@ -71,6 +75,10 @@ function App() {
         } else {
             const data = await response.json();
             console.log("success grabbing details", data);
+            setUserDetails({
+                "username": data.username,
+                "email": data.email
+            })
             if (data.is_staff === true || data.is_superuser === true) {
                 setIsAdmin(true);
             }
@@ -99,7 +107,7 @@ function App() {
                     <Registration isAuth={isAuth} setIsAuth={setIsAuth} />
                 </Route>
                 <Route path="/profile">
-                    <Profile />
+                    <Profile userDetails={userDetails}/>
                 </Route>
                 <Route path="/admin/portal">
                     <AdminBlogList />

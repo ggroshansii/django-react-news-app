@@ -1,0 +1,26 @@
+.profile-details-container {
+    text-align: left;
+    width: 150px;
+    margin: 0 auto;
+    margin-top: 1rem;
+    font-family: "Noto Mono Sans";
+}
+
+.profile-details-heading {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: rgb(231, 105, 83);
+    text-align: center;
+}
+
+.profile-details-subheading {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.profile-btn {
+    margin: 0rem 0.75rem;
+    font-family: "Noto Mono Sans";
+    font-weight: 900;
+    color: rgb(255, 238, 238)
+}

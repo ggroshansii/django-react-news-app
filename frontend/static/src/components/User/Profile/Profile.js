@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Cookies from "js-cookie";
-import BlogForm from "../../Main/BlogForm/BlogForm"
-import { NavLink } from 'react-router-dom'
+import BlogForm from "../../Main/BlogForm/BlogForm";
+import { NavLink } from "react-router-dom";
+import "./Profile.css"
 
-function Profile() {
+function Profile(props) {
     const [profile, setProfile] = useState({
         alias: "",
         avatar: null,
@@ -12,10 +13,10 @@ function Profile() {
 
     function handleChange(e) {
         const { name, value } = e.target;
-        let updatedProfile = {...profile}
+        let updatedProfile = { ...profile };
         updatedProfile[name] = value;
-        setProfile(updatedProfile)
-        console.log(profile)
+        setProfile(updatedProfile);
+        console.log(profile);
     }
 
     function handleImage(e) {
@@ -44,20 +45,20 @@ function Profile() {
             },
             body: formData,
         };
-        const response = await fetch('/api/accounts/profile/', options)
+        const response = await fetch("/api/accounts/profile/", options);
 
         if (response.ok === false) {
-            console.log("POST FAILED", response)
+            console.log("POST FAILED", response);
         } else {
-            const data = await response.json()
-            console.log("Success")
-            console.log(data)
+            const data = await response.json();
+            console.log("Success");
+            console.log(data);
         }
     }
 
     return (
         <div className="profile-container text-center row">
-            <form onSubmit={handleSubmit}>
+            {/* <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="alias">Display Name:</label>
                     <input
@@ -83,10 +84,24 @@ function Profile() {
                     Save profile
                 </button>
 
-            </form>
+            </form> */}
+            <div className="profile-details-container">
+                <h2 className="profile-details-heading">PROFILE</h2>
+                <h3 className="profile-details-subheading">Username: </h3>
+                <p>{props.userDetails.username}</p>
+                <h3 className="profile-details-subheading">Email: </h3>
+                <p>{props.userDetails.email}</p>
+            </div>
+
             <div>
-               <NavLink to="/account/blogs/create"><button className="btn btn-primary">Blog Submit Form</button></NavLink>
-               <NavLink to="/account/blogs/drafts"><button className="btn btn-primary">See My Drafts</button></NavLink>
+                <NavLink to="/account/blogs/create">
+                    <button className="btn btn-primary profile-btn">
+                        Blog Submit Form
+                    </button>
+                </NavLink>
+                <NavLink to="/account/blogs/drafts">
+                    <button className="btn btn-primary profile-btn">See My Drafts</button>
+                </NavLink>
             </div>
         </div>
     );
