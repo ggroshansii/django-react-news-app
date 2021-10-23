@@ -8,7 +8,6 @@ import Main from "./components/Main/Main";
 import Profile from "./components/User/Profile/Profile";
 import Registration from "./components/User/Registration/Registration";
 import Login from "./components/User/Login/Login";
-import Logout from "./components/User/Logout/Logout";
 import BlogForm from "./components/Main/BlogForm/BlogForm";
 import { useState, useEffect } from "react";
 import { Route, Switch, withRoute, useHistory } from "react-router-dom";
@@ -85,12 +84,6 @@ function App() {
             return currentBlogs;
         }
     }
-
-    console.log("fiter", filter);
-
-    console.log(filteredBlogs());
-
-    console.log("blogs", currentBlogs);
 
     return (
         <>

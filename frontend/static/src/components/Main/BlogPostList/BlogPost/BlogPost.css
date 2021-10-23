@@ -6,7 +6,13 @@
     margin-top: 1.5rem;
     border: 1px solid black;
     overflow: hidden;
-    background-color:#FFFFFF;
+    background-color:hsl(0, 0%, 100%);
+    color: black;
+
+}
+
+.nav-link-container {
+    text-decoration: none;
 }
 
 .blog-card-img-container {
@@ -37,6 +43,7 @@
 .blog-card-category {
     margin:0;
     font-family: 'Lato', sans-serif;
+    text-decoration: none;
 }
 
 .blog-card-author {

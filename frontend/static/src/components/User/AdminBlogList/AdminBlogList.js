@@ -1,13 +1,16 @@
 import Cookies from "js-cookie";
 import React from "react";
 import { useState, useEffect } from "react";
-import AdminBlogPost from "./AdminBlogPost/AdminBlogPost";
+import AdminBlogSubmitPost from "./AdminBlogSubmitPost/AdminBlogSubmitPost";
+import AdminBlogRejectPost from "./AdminBlogRejectPost/AdminBlogRejectPost";
+import AdminBlogPublishPost from "./AdminBlogPublishPost/AdminBlogPublishPost";
 import BlogPost from "../../Main/BlogPostList/BlogPost/BlogPost";
 import "./AdminBlogList.css";
 
 export default function AdminBlogList() {
     const [adminArticles, setAdminArtcles] = useState([]);
     const [categorySelection, setCategorySelection] = useState("ALL");
+
 
 
     useEffect(() => {
@@ -36,8 +39,26 @@ export default function AdminBlogList() {
    function handleOptionChange(e) {
         setCategorySelection(e.target.value);
     }
+    
+    let html;
+    if (categorySelection == "SBMT") {
+        html = adminArticles.map((blog) => {
+            return <AdminBlogSubmitPost {...blog} />
+        })
+    } else if (categorySelection == "ALL" || categorySelection == "DFT") {
+        html = adminArticles.map((blog) => {
+            return <BlogPost {...blog} />
+        })
+    } else if (categorySelection == "RJT") {
+        html = adminArticles.map((blog) => {
+            return <AdminBlogRejectPost {...blog} />
+        })
+    } else if (categorySelection == "PBLH") {
+        html = adminArticles.map((blog) => {
+            return <AdminBlogPublishPost {...blog} />
+        })
+    }
 
- 
 
     return (
         <div className="admin-blog-list-container">
@@ -62,14 +83,7 @@ export default function AdminBlogList() {
                 </div>
             </form>
 
-            <div className="ownblogs-list-container">{
-    categorySelection == "SBMT"
-        ? adminArticles.map((blog) => {
-              return <AdminBlogPost {...blog} />;
-          })
-        : adminArticles.map((blog) => {
-              return <BlogPost {...blog} />;
-          })}</div>
+            <div className="ownblogs-list-container">{html}</div>
         </div>
     );
 }

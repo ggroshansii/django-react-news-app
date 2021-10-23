@@ -92,7 +92,6 @@ export default function Header(props) {
 
         logoutLink =  <li className="nav-item" onClick={handleLogout}>
                 <NavLink
-                    activeClassName="active-nav-link"
                     className="nav-link"
                     to="/logout"
                 >
@@ -105,7 +104,6 @@ export default function Header(props) {
                 <>
                     <li className="nav-item">
                         <NavLink
-                            activeClassName="active-nav-link"
                             className="nav-link"
                             to="/admin/portal"
                         >
@@ -118,7 +116,6 @@ export default function Header(props) {
             profileLink = (
                 <li className="nav-item" >
                     <NavLink
-                        activeClassName="active-nav-link"
                         className="nav-link"
                         to="/profile"
                     >
@@ -132,7 +129,6 @@ export default function Header(props) {
             <>
                 <li className="nav-item" >
                     <NavLink
-                        activeClassName="active-nav-link"
                         className="nav-link"
                         to="/login"
                     >
@@ -141,7 +137,6 @@ export default function Header(props) {
                 </li>
                 <li className="nav-item">
                     <NavLink
-                        activeClassName="active-nav-link"
                         className="nav-link"
                         to="/registration"
                     >
@@ -162,7 +157,6 @@ export default function Header(props) {
                 <ul className="navbar-nav nav-container">
                     <li className="nav-item">
                         <NavLink
-                            activeClassName="active-nav-link"
                             className="nav-link"
                             style=""
                             to="/"
@@ -177,22 +171,22 @@ export default function Header(props) {
                 </ul>
             </div>
             <div className="header-category-container">
-                <p
+                <a
                     className="header-category"
                     value={null}
                     onClick={handleClick}
                 >
                     All
-                </p>
+                </a>
                 {[...uniqueCategories].map((category) => {
                     return (
-                        <p
+                        <a
                             className="header-category"
                             value={category}
                             onClick={handleClick}
                         >
                             {category}
-                        </p>
+                        </a>
                     );
                 })}
             </div>
