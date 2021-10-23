@@ -89,7 +89,7 @@ function UserBlogPostDetail(props) {
             },
             body: formData,
         }
-        const response = await fetch(`/api/articles/mydrafts/${blogID}`, options)
+        const response = await fetch(`/api/articles/mydrafts/${blogID}/`, options)
         if (response.ok === false) {
             console.log("EDIT POST FAILED", response)
         } else {

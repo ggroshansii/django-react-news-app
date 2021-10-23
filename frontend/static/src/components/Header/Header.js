@@ -11,7 +11,7 @@ export default function Header(props) {
     ];
 
     function handleClick(e) {
-        props.setFilter(e.target.innerHTML)
+        props.setFilter(e.target.innerHTML);
     }
 
     const uniqueCategories = new Set();
@@ -64,18 +64,40 @@ export default function Header(props) {
     let adminLink;
 
     if (props.isAuth === true) {
+        <li className="nav-item">
+            <NavLink
+                activeClassName="active-nav-link"
+                className="nav-link"
+                to="/logout"
+            >
+                Logout
+            </NavLink>
+        </li>;
+
         if (props.isAdmin === true) {
             adminLink = (
                 <>
                     <li className="nav-item">
-                        <NavLink activeClassName="active-nav-link" className="nav-link" to="/admin/portal">Admin Portal</NavLink>
+                        <NavLink
+                            activeClassName="active-nav-link"
+                            className="nav-link"
+                            to="/admin/portal"
+                        >
+                            Admin Portal
+                        </NavLink>
                     </li>
                 </>
             );
         } else {
             profileLink = (
                 <li className="nav-item">
-                    <NavLink activeClassName="active-nav-link" className="nav-link" to="/profile">Profile</NavLink>
+                    <NavLink
+                        activeClassName="active-nav-link"
+                        className="nav-link"
+                        to="/profile"
+                    >
+                        Profile
+                    </NavLink>
                 </li>
             );
         }
@@ -83,10 +105,22 @@ export default function Header(props) {
         loginRegisterLink = (
             <>
                 <li className="nav-item">
-                    <NavLink activeClassName="active-nav-link" className="nav-link" to="/login">Login</NavLink>
+                    <NavLink
+                        activeClassName="active-nav-link"
+                        className="nav-link"
+                        to="/login"
+                    >
+                        Login
+                    </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink activeClassName="active-nav-link" className="nav-link" to="/registration">Registration</NavLink>
+                    <NavLink
+                        activeClassName="active-nav-link"
+                        className="nav-link"
+                        to="/registration"
+                    >
+                        Registration
+                    </NavLink>
                 </li>
             </>
         );
@@ -98,13 +132,17 @@ export default function Header(props) {
             <h2 className="header-date">
                 {month_string}, {day} {year}{" "}
             </h2>
-            <div
-                className="collpase navbar-collapse "
-                id="navbarResponsive"
-            >
+            <div className="collpase navbar-collapse " id="navbarResponsive">
                 <ul className="navbar-nav nav-container">
                     <li className="nav-item">
-                        <NavLink activeClassName="active-nav-link" className="nav-link" style="" to="/">Home</NavLink>
+                        <NavLink
+                            activeClassName="active-nav-link"
+                            className="nav-link"
+                            style=""
+                            to="/"
+                        >
+                            Home
+                        </NavLink>
                     </li>
                     {profileLink}
                     {loginRegisterLink}
@@ -112,11 +150,25 @@ export default function Header(props) {
                 </ul>
             </div>
             <div className="header-category-container">
-                <p className="header-category" value={null} onClick={handleClick}>All</p>
+                <p
+                    className="header-category"
+                    value={null}
+                    onClick={handleClick}
+                >
+                    All
+                </p>
                 {[...uniqueCategories].map((category) => {
-                    return <p className="header-category" value={category} onClick={handleClick}>{category}</p>;
+                    return (
+                        <p
+                            className="header-category"
+                            value={category}
+                            onClick={handleClick}
+                        >
+                            {category}
+                        </p>
+                    );
                 })}
             </div>
         </div>
-    )
+    );
 }
