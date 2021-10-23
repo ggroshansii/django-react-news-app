@@ -3,9 +3,12 @@ import BlogPost from './BlogPost/BlogPost'
 import "./BlogPostList.css"
 
 export default function BlogPostList(props) {
+
+    let currentBlogs = props.filteredBlogs()
+    console.log(currentBlogs)
     return (
         <div className="blog-post-list-container">
-            {props.currentBlogs.map(blog => {
+            {currentBlogs.map(blog => {
                 return <BlogPost {...blog} />
             })}
         </div>

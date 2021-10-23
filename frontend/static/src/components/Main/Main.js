@@ -7,7 +7,7 @@ import "./Main.css"
 export default function Main(props) {
     return (
         <div className="main-container">
-            <BlogPostList currentBlogs={props.currentBlogs}/>
+            <BlogPostList currentBlogs={props.currentBlogs} filteredBlogs={props.filteredBlogs}/>
             <Aside currentBlogs={props.currentBlogs}/>
         </div>
     )

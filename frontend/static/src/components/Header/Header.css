@@ -3,7 +3,6 @@
 .header-container {
     font-family: 'Playfair Display', serif; 
     text-align: center;
-
 }
 
 .newspaper-name {
@@ -27,6 +26,23 @@
     margin: 0.25rem 0rem;
 }
 
-.nav-bar-container{
+.nav-container{
     display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
+
+.nav-link {
+    margin: 0 0.5rem;
+    font-weight: 700;
+    text-decoration: none !important;
+    color: black;
+}
+
+.nav-link:focus {
+    color: tomato;
+}
+.nav-link:hover {
+    color: tomato;
+}
+

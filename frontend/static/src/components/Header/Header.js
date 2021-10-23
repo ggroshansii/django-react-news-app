@@ -10,7 +10,9 @@ export default function Header(props) {
         currentDate.getFullYear(),
     ];
 
-    console.log("header fired", props.isAuth)
+    function handleClick(e) {
+        props.setFilter(e.target.innerHTML)
+    }
 
     const uniqueCategories = new Set();
     props.currentBlogs.map((blog) => {
@@ -66,14 +68,14 @@ export default function Header(props) {
             adminLink = (
                 <>
                     <li className="nav-item">
-                        <NavLink to="/admin/portal">Admin Portal</NavLink>
+                        <NavLink activeClassName="active-nav-link" className="nav-link" to="/admin/portal">Admin Portal</NavLink>
                     </li>
                 </>
             );
         } else {
             profileLink = (
                 <li className="nav-item">
-                    <NavLink to="/profile">Profile</NavLink>
+                    <NavLink activeClassName="active-nav-link" className="nav-link" to="/profile">Profile</NavLink>
                 </li>
             );
         }
@@ -81,10 +83,10 @@ export default function Header(props) {
         loginRegisterLink = (
             <>
                 <li className="nav-item">
-                    <NavLink to="/login">Login</NavLink>
+                    <NavLink activeClassName="active-nav-link" className="nav-link" to="/login">Login</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/registration">Registration</NavLink>
+                    <NavLink activeClassName="active-nav-link" className="nav-link" to="/registration">Registration</NavLink>
                 </li>
             </>
         );
@@ -97,12 +99,12 @@ export default function Header(props) {
                 {month_string}, {day} {year}{" "}
             </h2>
             <div
-                className="collpase navbar-collapse nav-container"
+                className="collpase navbar-collapse "
                 id="navbarResponsive"
             >
-                <ul className="navbar-nav">
+                <ul className="navbar-nav nav-container">
                     <li className="nav-item">
-                        <NavLink to="/">Home</NavLink>
+                        <NavLink activeClassName="active-nav-link" className="nav-link" style="" to="/">Home</NavLink>
                     </li>
                     {profileLink}
                     {loginRegisterLink}
@@ -111,9 +113,9 @@ export default function Header(props) {
             </div>
             <div className="header-category-container">
                 {[...uniqueCategories].map((category) => {
-                    return <p className="header-category">#{category}</p>;
+                    return <p className="header-category" value={category} onClick={handleClick}>{category}</p>;
                 })}
             </div>
         </div>
-    );
+    )
 }

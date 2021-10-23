@@ -20,6 +20,7 @@ function App() {
     const [currentBlogs, setCurrentBlogs] = useState([]);
     const history = useHistory();    
     const [isAdmin, setIsAdmin] = useState(false)
+    const [filter, setFilter] = useState(null)
 
     useEffect(() => {
         const checkAuth = async () => {
@@ -77,11 +78,24 @@ function App() {
         }
     }
 
+    function filteredBlogs() {
+        if (filter) {
+            return currentBlogs.filter(blog => blog.category === filter)
+            
+        } else {
+            return currentBlogs
+        }
+    }
+
     
+
+    console.log(filteredBlogs())
+
+    console.log("blogs", currentBlogs)
 
     return (
         <>
-            <Header currentBlogs={currentBlogs} isAuth={isAuth} isAdmin={isAdmin}/>
+            <Header currentBlogs={currentBlogs} isAuth={isAuth} isAdmin={isAdmin} setFilter={setFilter}/>
             <Switch>
                 <Route path="/registration">
                     <Registration isAuth={isAuth} setIsAuth={setIsAuth} />
@@ -108,7 +122,7 @@ function App() {
                     <UserBlogEditDetail />
                 </Route>
                 <Route path="/">
-                    <Main currentBlogs={currentBlogs}/>
+                    <Main filteredBlogs={filteredBlogs} currentBlogs={currentBlogs}/>
                 </Route>
             </Switch>
             <Footer />
