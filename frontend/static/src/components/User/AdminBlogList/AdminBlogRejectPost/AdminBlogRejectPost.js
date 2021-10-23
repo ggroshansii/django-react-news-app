@@ -30,7 +30,6 @@ function AdminBlogRejectPost(props) {
         }
     }
 
-
     return (
         <div>
             <div>

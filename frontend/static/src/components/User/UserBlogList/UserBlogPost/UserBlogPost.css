@@ -2,10 +2,8 @@
 .ownblog-card-container{
     width: 500px;
     padding: 1rem;
-    height: 450px;
     margin: 1.5rem auto;
     border: 1px solid black;
-    overflow: hidden;
     background-color:#FFFFFF;
 }
 
@@ -16,4 +14,5 @@
 
 .ownblog-btn {
     width: 200px;
+    margin: 1rem 0rem;
 }
