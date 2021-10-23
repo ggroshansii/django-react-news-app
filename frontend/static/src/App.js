@@ -8,6 +8,7 @@ import Main from "./components/Main/Main";
 import Profile from "./components/User/Profile/Profile"
 import Registration from "./components/User/Registration/Registration";
 import Login from "./components/User/Login/Login";
+import Logout from "./components/User/Logout/Logout"
 import BlogForm from './components/Main/BlogForm/BlogForm';
 import { useState, useEffect } from "react";
 import { Route, Switch, withRoute, useHistory } from "react-router-dom";
@@ -94,7 +95,7 @@ function App() {
 
     return (
         <>
-            <Header currentBlogs={currentBlogs} isAuth={isAuth} isAdmin={isAdmin} setFilter={setFilter}/>
+            <Header currentBlogs={currentBlogs} isAuth={isAuth} isAdmin={isAdmin} setFilter={setFilter} setIsAuth={setIsAuth}/>
             <Switch>
                 <Route path="/registration">
                     <Registration isAuth={isAuth} setIsAuth={setIsAuth} />
@@ -113,6 +114,9 @@ function App() {
                 </Route>
                 <Route path="/login">
                     <Login isAuth={isAuth} setIsAuth={setIsAuth} />
+                </Route>
+                <Route path="/logout">
+                    <Logout isAuth={isAuth} setIsAuth={setIsAuth} />
                 </Route>
                 <Route path="/blogs/detail/:id">
                     <BlogDetailReadOnly />

@@ -1,6 +1,7 @@
 import "./Header.css";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function Header(props) {
     const currentDate = new Date();
@@ -13,6 +14,29 @@ export default function Header(props) {
     function handleClick(e) {
         props.setFilter(e.target.innerHTML);
     }
+
+
+    async function handleLogout (){
+         const options = {
+             method: 'POST',
+             headers: {
+                 'Content-Type': 'application/json',
+                 'X-CSRFToken': Cookies.get('csrftoken'),
+             },
+             body: JSON.stringify({}),
+         };
+         const response = await fetch('/rest-auth/logout/', options)
+         if(!response){
+             console.log(response);
+         } else {
+             console.log(response)
+             const data = await response.json();
+             Cookies.remove('Authorization');
+            props.setIsAuth(false)
+            
+         }
+         <Redirect path="/" />
+        }
 
     const uniqueCategories = new Set();
     props.currentBlogs.map((blog) => {
@@ -60,19 +84,21 @@ export default function Header(props) {
     }
 
     let loginRegisterLink;
+    let logoutLink;
     let profileLink;
     let adminLink;
 
     if (props.isAuth === true) {
-        <li className="nav-item">
-            <NavLink
-                activeClassName="active-nav-link"
-                className="nav-link"
-                to="/logout"
-            >
-                Logout
-            </NavLink>
-        </li>;
+
+        logoutLink =  <li className="nav-item" onClick={handleLogout}>
+                <NavLink
+                    activeClassName="active-nav-link"
+                    className="nav-link"
+                    to="/logout"
+                >
+                    Logout
+                </NavLink>
+            </li>
 
         if (props.isAdmin === true) {
             adminLink = (
@@ -90,7 +116,7 @@ export default function Header(props) {
             );
         } else {
             profileLink = (
-                <li className="nav-item">
+                <li className="nav-item" >
                     <NavLink
                         activeClassName="active-nav-link"
                         className="nav-link"
@@ -104,7 +130,7 @@ export default function Header(props) {
     } else {
         loginRegisterLink = (
             <>
-                <li className="nav-item">
+                <li className="nav-item" >
                     <NavLink
                         activeClassName="active-nav-link"
                         className="nav-link"
@@ -147,6 +173,7 @@ export default function Header(props) {
                     {profileLink}
                     {loginRegisterLink}
                     {adminLink}
+                    {logoutLink}
                 </ul>
             </div>
             <div className="header-category-container">
