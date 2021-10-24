@@ -29,6 +29,10 @@ async function grabOwnBlogs(){
     }
 }
 
+if (OwnBlogsState.length === 0) {
+    return <h1 className="no-current-drafts-heading">No Current Drafts</h1>
+}
+
 
     return (
         <div className="ownblogs-list-container">

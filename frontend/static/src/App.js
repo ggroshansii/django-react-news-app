@@ -98,7 +98,6 @@ function App() {
             <Header
                 currentBlogs={currentBlogs}
                 isAuth={isAuth}
-                isAdmin={isAdmin}
                 setFilter={setFilter}
                 setIsAuth={setIsAuth}
             />

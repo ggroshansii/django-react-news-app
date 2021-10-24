@@ -20,6 +20,7 @@ class Article(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='profiles/', null=True)
+    popularity_score = models.IntegerField(default=0)
 
     category = models.CharField(max_length = 25)
 
