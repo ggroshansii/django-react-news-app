@@ -100,6 +100,7 @@ function App() {
                 isAuth={isAuth}
                 setFilter={setFilter}
                 setIsAuth={setIsAuth}
+                isAdmin={isAdmin}
             />
             <Switch>
                 <Route path="/registration">
