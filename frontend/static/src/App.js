@@ -132,6 +132,7 @@ function App() {
                 </Route>
                 <Route path="/">
                     <Main
+                        setFilter={setFilter}
                         filteredBlogs={filteredBlogs}
                         currentBlogs={currentBlogs}
                     />

@@ -5,10 +5,43 @@ import BlogForm from "./BlogForm/BlogForm"
 import "./Main.css"
 
 export default function Main(props) {
+
+
+    const uniqueCategories = new Set();
+    props.currentBlogs.map((blog) => {
+        uniqueCategories.add(blog.category);
+    });
+
+    function handleClick(e) {
+        props.setFilter(e.target.innerHTML);
+    } 
     return (
-        <div className="main-container">
+        <div>
+                        <div className="header-category-container">
+                <a
+                    className="header-category"
+                    value={null}
+                    onClick={handleClick}
+                >
+                    All
+                </a>
+                {[...uniqueCategories].map((category) => {
+                    return (
+                        <a
+                            className="header-category"
+                            value={category}
+                            onClick={handleClick}
+                        >
+                            {category}
+                        </a>
+                    );
+                })}
+            </div>
+            <div className="main-container">
             <BlogPostList currentBlogs={props.currentBlogs} filteredBlogs={props.filteredBlogs}/>
             <Aside currentBlogs={props.currentBlogs}/>
         </div>
+        </div>
+
     )
 }
