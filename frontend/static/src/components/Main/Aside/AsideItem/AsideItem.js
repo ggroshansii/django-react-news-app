@@ -12,7 +12,7 @@ export default function AsideItem(props) {
                 />
             </div>
             <div className="aside-item-text-container">
-                <p className="aside-item-category">{props.category}</p>
+                <p className="aside-item-category">#{props.category}</p>
                 <h2 className="aside-item-title">
                     {props.title}
                 </h2>
