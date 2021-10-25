@@ -7,7 +7,11 @@
     overflow: hidden;
     background-color:hsl(0, 0%, 100%);
     color: black;
-
+    transition: transform 1s;
+}
+.blog-card-container:hover {
+    transform: translateY(-8px);
+    border: 2px solid goldenrod;
 }
 
 .nav-link-container {

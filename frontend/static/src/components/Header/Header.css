@@ -40,10 +40,10 @@
 }
 
 .header-category:focus{
-    color: tomato;
+    color: goldenrod;
 }
 .header-category:hover{
-    color: tomato;
+    color: goldenrod;
     cursor: pointer;
     letter-spacing: 0.15rem;
 
@@ -63,13 +63,13 @@
     width: 200px;
     font-weight: 700;
     font-size: 1.05rem;
-    color: tomato;
+    color: goldenrod;
  
 }
 
 .nav-link:hover {
     color: white;
-    background-color: tomato;
+    background-color: goldenrod;
 }
 .nav-link:focus {
     color: black;
