@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import Cookies from 'js-cookie'
 import { Redirect, withRouter } from 'react-router'
+import "./Login.css"
 
 function Login(props) {
 
@@ -42,17 +43,18 @@ function Login(props) {
     }
 
     return (
-        <div>
+        <div className="login-container">
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
+                <h2 className="login-heading">Login:</h2>
+                <div className="form-group mt-3">
                 <label htmlFor="username">Username:</label>
-                    <input value={user.username} className="form-control" type="text" id="username" onChange={handleChange} placeholder="Enter Username.." />
+                    <input value={user.username} className="form-control mt-1" type="text" id="username" onChange={handleChange} placeholder="Enter Username.." />
                 </div>
-                <div className="form-group">
+                <div className="form-group mt-2">
                 <label htmlFor="password">Password:</label>
-                    <input value={user.password} className="form-control" type="password" id="password" onChange={handleChange} placeholder="Enter Password.." />
+                    <input value={user.password} className="form-control mt-1" type="password" id="password" onChange={handleChange} placeholder="Enter Password.." />
                 </div>
-                <button type='submit'>Login</button>
+                <button type='submit' className="btn btn-primary mt-3 login-btn btn-goldenrod">Submit</button>
             </form>
         </div>
     )
