@@ -12,4 +12,6 @@ urlpatterns = [
     path("mydrafts/", views.UserArticleListView.as_view()),
     path('<int:pk>/', views.ReadOnlyArticleDetailAPIView.as_view()),
     path('mydrafts/<int:pk>/', views.UserArticleDetailAPIView.as_view()),
+
+    # path('score_update/<int:pk>/', views.article_detail.as_view)
 ]
