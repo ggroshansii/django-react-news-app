@@ -24,6 +24,7 @@ function AdminBlogPublishPost(props) {
         if (response.ok === false) {
         } else {
             const data = await response.json()
+            props.removeBlog(props.id, props.adminArticles, props.setAdminArticles);
         }
     }
 

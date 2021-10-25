@@ -28,6 +28,7 @@ function AdminBlogSubmitPost(props) {
         } else {
             const data = await response.json()
             console.log("SUCCESS REJECTED", data);
+            props.removeBlog(props.id, props.adminArticles, props.setAdminArticles);
         }
     }
 
@@ -53,6 +54,7 @@ function AdminBlogSubmitPost(props) {
         } else {
             const data = await response.json()
             console.log("SUCCESS PUBLISHED", data);
+            props.removeBlog(props.id, props.adminArticles, props.setAdminArticles);
         }
     }
 

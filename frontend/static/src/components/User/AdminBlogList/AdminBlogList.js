@@ -7,8 +7,8 @@ import AdminBlogPublishPost from "./AdminBlogPublishPost/AdminBlogPublishPost";
 import BlogPost from "../../Main/BlogPostList/BlogPost/BlogPost";
 import "./AdminBlogList.css";
 
-export default function AdminBlogList() {
-    const [adminArticles, setAdminArtcles] = useState([]);
+export default function AdminBlogList(props) {
+    const [adminArticles, setAdminArticles] = useState([]);
     const [categorySelection, setCategorySelection] = useState("ALL");
 
 
@@ -32,7 +32,7 @@ export default function AdminBlogList() {
             console.log("FAILED", response);
         } else {
             const data = await response.json();
-            setAdminArtcles(data);
+            setAdminArticles(data);
         }
     }
 
@@ -43,7 +43,7 @@ export default function AdminBlogList() {
     let html;
     if (categorySelection == "SBMT") {
         html = adminArticles.map((blog) => {
-            return <AdminBlogSubmitPost {...blog} />
+            return <AdminBlogSubmitPost {...blog} removeBlog={props.removeBlog} adminArticles={adminArticles} setAdminArticles={setAdminArticles}/>
         })
     } else if (categorySelection == "ALL" || categorySelection == "DFT") {
         html = adminArticles.map((blog) => {
@@ -51,11 +51,11 @@ export default function AdminBlogList() {
         })
     } else if (categorySelection == "RJT") {
         html = adminArticles.map((blog) => {
-            return <AdminBlogRejectPost {...blog} />
+            return <AdminBlogRejectPost {...blog} removeBlog={props.removeBlog} adminArticles={adminArticles} setAdminArticles={setAdminArticles} />
         })
     } else if (categorySelection == "PBLH") {
         html = adminArticles.map((blog) => {
-            return <AdminBlogPublishPost {...blog} />
+            return <AdminBlogPublishPost {...blog} removeBlog={props.removeBlog} adminArticles={adminArticles} setAdminArticles={setAdminArticles}/>
         })
     }
 

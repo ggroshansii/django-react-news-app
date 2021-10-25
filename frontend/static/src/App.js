@@ -1,5 +1,5 @@
 import "./App.css";
-import Cookies from "js-cookie";
+import Cookies, { remove } from "js-cookie";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import UserBlogList from "./components/User/UserBlogList/UserBlogList";
@@ -100,6 +100,33 @@ function App() {
        func(updatedArr)
     }
 
+    async function updatePopularityScore(id, props) {
+
+        let newPopularityScore = props.popularity_score + 1
+
+        let updatedObj = {
+            title: props.title,
+            body: props.body,
+            category: props.category,
+            popularity_score: newPopularityScore
+        }
+
+        const options = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookies.get("csrftoken")
+            },
+            body: JSON.stringify(updatedObj)
+        }
+        const response = await fetch(`/api/articles/${id}/`, options)
+        if (response.ok === false) {
+            console.log("POP SCORE UPDATE FAIL")
+        } else {
+            const data = await response.json()
+        }
+    }
+
     return (
         <>
             <Header
@@ -118,7 +145,7 @@ function App() {
                     <Profile userDetails={userDetails}/>
                 </Route>
                 <Route path="/admin/portal">
-                    <AdminBlogList />
+                    <AdminBlogList removeBlog={removeBlog} />
                 </Route>
                 <Route path="/account/blogs/create">
                     <BlogForm />
@@ -136,13 +163,14 @@ function App() {
                     <BlogDetailReadOnly />
                 </Route>
                 <Route path="/account/blogs/detail/:id">
-                    <UserBlogEditDetail />
+                    <UserBlogEditDetail/>
                 </Route>
                 <Route path="/">
                     <Main
                         setFilter={setFilter}
                         filteredBlogs={filteredBlogs}
                         currentBlogs={currentBlogs}
+                        updatePopularityScore={updatePopularityScore}
                     />
                 </Route>
             </Switch>

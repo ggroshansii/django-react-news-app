@@ -6,8 +6,13 @@ import { NavLink } from 'react-router-dom'
 
 export default function BlogPost(props) {
 
+
+    function handleScoreUpdate() {
+        props.updatePopularityScore(props.id, props)
+    }
+
     return (
-        <div>
+        <div onClick={handleScoreUpdate}>
             <NavLink to={`/blogs/detail/${props.id}`} className="nav-link-container">
                 <div className="blog-card-container">
                     <div className="blog-card-img-container">

@@ -41,6 +41,7 @@ export default function Main(props) {
                         <BlogPostList
                             currentBlogs={props.currentBlogs}
                             filteredBlogs={props.filteredBlogs}
+                            updatePopularityScore={props.updatePopularityScore}
                         />
                     </div>
                     <div className="col">

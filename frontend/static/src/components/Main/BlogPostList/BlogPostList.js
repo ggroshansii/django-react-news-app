@@ -9,7 +9,7 @@ export default function BlogPostList(props) {
     return (
         <div className="blog-post-list-container">
             {currentBlogs.map(blog => {
-                return <BlogPost {...blog} />
+                return <BlogPost updatePopularityScore={props.updatePopularityScore} {...blog} />
             })}
         </div>
     )
