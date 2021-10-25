@@ -1,26 +1,30 @@
-.profile-details-container {
+.profile-container {
     text-align: left;
     width: 150px;
     margin: 0 auto;
     margin-top: 1rem;
-    font-family: "Noto Mono Sans";
+    width: 355px;
+    background: #ffffff;
+    padding: 2rem 3rem;
+    margin: 2rem auto;
+    border: 2px solid goldenrod;
 }
 
+
 .profile-details-heading {
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: rgb(231, 105, 83);
-    text-align: center;
-}
+    color: goldenrod;
+    font-family: "Playfair Display", serif;
+    }
+
 
 .profile-details-subheading {
     font-size: 1.25rem;
     font-weight: 700;
 }
 
-.profile-btn {
+.profile-container .profile-btn {
     margin: 0rem 0.75rem;
-    font-family: "Noto Mono Sans";
+    font-family: "Playfair Display", serif;
     font-weight: 900;
-    color: rgb(255, 238, 238)
+    width: 200px;
 }

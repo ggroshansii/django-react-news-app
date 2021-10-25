@@ -58,36 +58,9 @@ function Profile(props) {
 
     return (
         <div className="profile-container text-center row">
-            {/* <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="alias">Display Name:</label>
-                    <input
-                        id="alias"
-                        type="text"
-                        value={profile.alias}
-                        name="alias"
-                        onChange={handleChange}
-                        className="form-control"
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="avatar">Choose your avatar: </label>
-                    <input
-                        id="avatar"
-                        type="file"
-                        name="avatar"
-                        onChange={handleImage}
-                    />
-                </div>
-
-                <button type="submit" className="btn btn-success mt-3">
-                    Save profile
-                </button>
-
-            </form> */}
             <div className="profile-details-container">
-                <h2 className="profile-details-heading">PROFILE</h2>
-                <h3 className="profile-details-subheading">Username: </h3>
+                <h2 className="profile-details-heading">Profile:</h2>
+                <h3 className="profile-details-subheading mt-3">Username: </h3>
                 <p>{props.userDetails.username}</p>
                 <h3 className="profile-details-subheading">Email: </h3>
                 <p>{props.userDetails.email}</p>
@@ -95,12 +68,12 @@ function Profile(props) {
 
             <div>
                 <NavLink to="/account/blogs/create">
-                    <button className="btn btn-primary profile-btn">
-                        Blog Submit Form
+                    <button className="btn btn-primary profile-btn btn-goldenrod">
+                        Submit a Blog!
                     </button>
                 </NavLink>
                 <NavLink to="/account/blogs/drafts">
-                    <button className="btn btn-primary profile-btn">See My Drafts</button>
+                    <button className="btn btn-primary profile-btn btn-goldenrod mt-2">My Drafts</button>
                 </NavLink>
             </div>
         </div>
