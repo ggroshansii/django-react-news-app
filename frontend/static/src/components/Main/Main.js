@@ -11,45 +11,42 @@ export default function Main(props) {
     });
 
     function handleClick(e) {
-        props.setFilter(e.target.innerHTML);
+        props.setFilter(e.target.value);
     }
     return (
         <div>
             <div className="header-category-container">
-                <a
+                <button
                     className="header-category"
                     value={null}
                     onClick={handleClick}
                 >
                     All
-                </a>
+                </button>
                 {[...uniqueCategories].map((category) => {
                     return (
-                        <a
+                        <button
                             className="header-category"
                             value={category}
                             onClick={handleClick}
                         >
-                            {category}
-                        </a>
+                            #{category}
+                        </button>
                     );
                 })}
             </div>
             <div className="main-container container">
                 <div className="row">
-                <div className="col">
-                <BlogPostList
-                    currentBlogs={props.currentBlogs}
-                    filteredBlogs={props.filteredBlogs}
-                />
+                    <div className="col">
+                        <BlogPostList
+                            currentBlogs={props.currentBlogs}
+                            filteredBlogs={props.filteredBlogs}
+                        />
+                    </div>
+                    <div className="col">
+                        <Aside currentBlogs={props.currentBlogs} />
+                    </div>
                 </div>
-                <div className="col">
-                <Aside currentBlogs={props.currentBlogs}
-                         />
-                </div>
-
-                </div>
-
             </div>
         </div>
     );

@@ -11,35 +11,28 @@ export default function Header(props) {
         currentDate.getFullYear(),
     ];
 
-
-
-
-    async function handleLogout (){
-         const options = {
-             method: 'POST',
-             headers: {
-                 'Content-Type': 'application/json',
-                 'X-CSRFToken': Cookies.get('csrftoken'),
-             },
-             body: JSON.stringify({}),
-         };
-         const response = await fetch('/rest-auth/logout/', options)
-         if(!response){
-             console.log(response);
-         } else {
-             console.log(response)
-             const data = await response.json();
-             Cookies.remove('Authorization');
-            props.setIsAuth(false)
-            props.setIsAdmin(false)
-         }
+    async function handleLogout() {
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookies.get("csrftoken"),
+            },
+            body: JSON.stringify({}),
+        };
+        const response = await fetch("/rest-auth/logout/", options);
+        if (!response) {
+            console.log(response);
+        } else {
+            console.log(response);
+            const data = await response.json();
+            Cookies.remove("Authorization");
+            props.setIsAuth(false);
+            props.setIsAdmin(false);
         }
+    }
 
-        function handleLogoClick() {
-            
-        }
-
-
+    function handleLogoClick() {}
 
     let month_string;
     switch (month + 1) {
@@ -87,25 +80,20 @@ export default function Header(props) {
     let adminLink;
 
     if (props.isAuth === true) {
-
-        logoutLink =  <li className="nav-item" onClick={handleLogout}>
-                <NavLink
-                    className="nav-link"
-                    to="/logout"
-                >
+        logoutLink = (
+            <li className="nav-item" onClick={handleLogout}>
+                <NavLink className="nav-link" to="/logout">
                     LOGOUT
                 </NavLink>
             </li>
+        );
 
         if (props.isAdmin === true) {
-            console.log("ADMIN FIRED", props.isAdmin)
+            console.log("ADMIN FIRED", props.isAdmin);
             adminLink = (
                 <>
                     <li className="nav-item">
-                        <NavLink
-                            className="nav-link"
-                            to="/admin/portal"
-                        >
+                        <NavLink className="nav-link" to="/admin/portal">
                             ADMIN PORTAL
                         </NavLink>
                     </li>
@@ -113,11 +101,8 @@ export default function Header(props) {
             );
         } else {
             profileLink = (
-                <li className="nav-item" >
-                    <NavLink
-                        className="nav-link"
-                        to="/profile"
-                    >
+                <li className="nav-item">
+                    <NavLink className="nav-link" to="/profile">
                         PROFILE
                     </NavLink>
                 </li>
@@ -126,19 +111,13 @@ export default function Header(props) {
     } else {
         loginRegisterLink = (
             <>
-                <li className="nav-item" >
-                    <NavLink
-                        className="nav-link"
-                        to="/login"
-                    >
+                <li className="nav-item">
+                    <NavLink className="nav-link" to="/login">
                         LOGIN
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink
-                        className="nav-link"
-                        to="/registration"
-                    >
+                    <NavLink className="nav-link" to="/registration">
                         REGISTRATION
                     </NavLink>
                 </li>
@@ -148,18 +127,19 @@ export default function Header(props) {
 
     return (
         <div className="header-container">
-            <h1 className="newspaper-name" onClick={handleLogoClick}>The Gartholomew Gazette</h1>
-            <h2 className="header-date">
-                {month_string}, {day} {year}{" "}
-            </h2>
+            <div className="upper-header-container">
+                <h1 className="newspaper-name" onClick={handleLogoClick}>
+                    The Gartholomew Gazette
+                </h1>
+                <h2 className="header-date">
+                    {month_string}, {day} {year}{" "}
+                </h2>
+            </div>
+
             <div className="collpase navbar-collapse " id="navbarResponsive">
                 <ul className="navbar-nav nav-container">
                     <li className="nav-item">
-                        <NavLink
-                            className="nav-link"
-                            style=""
-                            to="/"
-                        >
+                        <NavLink className="nav-link" style="" to="/">
                             HOME
                         </NavLink>
                     </li>
@@ -169,7 +149,6 @@ export default function Header(props) {
                     {logoutLink}
                 </ul>
             </div>
-
         </div>
     );
 }

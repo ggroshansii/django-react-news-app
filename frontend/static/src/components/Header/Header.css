@@ -14,10 +14,12 @@
 
 .header-date {
     margin-top: 0.5rem;
+    margin-bottom: 0rem;
+    padding-bottom: 2rem;
+    font-size: 1.5rem;
 }
 
 .header-category-container {
-    border-top: 1px solid black;
     border-bottom: 1px solid black;
     display: flex;
     justify-content: space-around;
@@ -30,6 +32,11 @@
     color: black;
     text-decoration: none;
     font-style: italic;
+    width: 175px;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    transition: letter-spacing 1s;
 }
 
 .header-category:focus{
@@ -38,27 +45,37 @@
 .header-category:hover{
     color: tomato;
     cursor: pointer;
+    letter-spacing: 0.15rem;
+
 }
 
 .nav-container{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    border-top: 2px solid lightgray;
+    border-bottom: 2px solid lightgray;
+    background-color: #ffffff;
+
 }
 
-.nav-link {
-    margin: 0 0.5rem;
+.nav-link{
+    width: 200px;
     font-weight: 700;
-    color: black;
-    letter-spacing: 0.05rem;
-    transition: letter-spacing 1s;
+    font-size: 1.05rem;
+    color: tomato;
+ 
 }
 
-.nav-link:focus {
-    color: tomato;
-}
 .nav-link:hover {
-    color: tomato;
-    letter-spacing: 0.175rem;
+    color: white;
+    background-color: tomato;
+}
+.nav-link:focus {
+    color: black;
 }
 
+
+.upper-header-container {
+   background-color: #ffffff;
+}
