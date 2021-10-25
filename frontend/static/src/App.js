@@ -93,6 +93,13 @@ function App() {
         }
     }
 
+    function removeBlog(id, arr, func) {
+       let index = arr.findIndex((element) => element.id === id);
+       let updatedArr = [...arr]
+       updatedArr.splice(index, 1)
+       func(updatedArr)
+    }
+
     return (
         <>
             <Header
@@ -117,7 +124,7 @@ function App() {
                     <BlogForm />
                 </Route>
                 <Route path="/account/blogs/drafts">
-                    <UserBlogList />
+                    <UserBlogList removeBlog={removeBlog}/>
                 </Route>
                 <Route path="/login">
                     <Login isAuth={isAuth} setIsAuth={setIsAuth}/>

@@ -22,7 +22,7 @@ function UserBlogPost(props) {
             },
             body: JSON.stringify(updatedObj)
         }
-        const response = await fetch(`/api/articles/mydrafts/${props.id}`, options)
+        const response = await fetch(`/api/articles/mydrafts/${props.id}/`, options)
         if (response.ok === false) {
             console.log("SUBMIT FOR REVIEW FAILED", response);
         } else {
@@ -38,6 +38,7 @@ function UserBlogPost(props) {
 
     function handleFinalSubmit() {
         submitForReview()
+        props.removeBlog(props.id, props.OwnBlogsState, props.setOwnBlogsState)
         props.history.push('/account/blogs/drafts/')
     }
 
@@ -59,7 +60,7 @@ function UserBlogPost(props) {
                     </div>
                     <div className="ownblog-edit-btn-container">
                       <button className="btn btn-warning ownblog-btn" onClick={handleEditClick}>Edit</button>
-                        <button className="btn btn-success ownblog-btn" onClick={handleFinalSubmit}>
+                        <button className="btn btn-success ownblog-btn" value={props.id} onClick={handleFinalSubmit}>
                             Final Submit
                         </button>
                     </div>

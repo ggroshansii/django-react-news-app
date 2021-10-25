@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import UserBlogPost from './UserBlogPost/UserBlogPost'
 import './UserBlogList.css'
 
-export default function UserBlogList() {
+export default function UserBlogList(props) {
 
 const [OwnBlogsState, setOwnBlogsState] = useState([])
 
@@ -37,7 +37,7 @@ if (OwnBlogsState.length === 0) {
     return (
         <div className="ownblogs-list-container">
             {OwnBlogsState.map(blog => {
-                return <UserBlogPost {...blog} />
+                return <UserBlogPost {...blog} removeBlog={props.removeBlog} setOwnBlogsState={setOwnBlogsState} OwnBlogsState={OwnBlogsState} />
             })}
         </div>
     )
