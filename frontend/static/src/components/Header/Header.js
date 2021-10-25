@@ -35,7 +35,9 @@ export default function Header(props) {
          }
         }
 
-
+        function handleLogoClick() {
+            
+        }
 
 
 
@@ -146,7 +148,7 @@ export default function Header(props) {
 
     return (
         <div className="header-container">
-            <h1 className="newspaper-name">The Gartholomew Gazette</h1>
+            <h1 className="newspaper-name" onClick={handleLogoClick}>The Gartholomew Gazette</h1>
             <h2 className="header-date">
                 {month_string}, {day} {year}{" "}
             </h2>
