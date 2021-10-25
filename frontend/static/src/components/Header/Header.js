@@ -31,7 +31,7 @@ export default function Header(props) {
              const data = await response.json();
              Cookies.remove('Authorization');
             props.setIsAuth(false)
-            
+            props.setIsAdmin(false)
          }
         }
 
@@ -96,6 +96,7 @@ export default function Header(props) {
             </li>
 
         if (props.isAdmin === true) {
+            console.log("ADMIN FIRED", props.isAdmin)
             adminLink = (
                 <>
                     <li className="nav-item">
