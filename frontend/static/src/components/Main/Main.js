@@ -36,7 +36,7 @@ export default function Main(props) {
                 })}
             </div>
             <div className="main-container container">
-                <div className="row">
+                <div className="row gx-5">
                     <div className="col">
                         <BlogPostList
                             currentBlogs={props.currentBlogs}

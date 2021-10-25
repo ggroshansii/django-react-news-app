@@ -1,9 +1,12 @@
 import React from "react";
-import "./AsideItem.css"
+import "./AsideItem.css";
+import { NavLink } from "react-router-dom"
 
 export default function AsideItem(props) {
     return (
+        <NavLink to={`/blogs/detail/${props.id}`} className="aside-item-navlink">
         <div className="aside-item-container">
+            
             <div className="aside-item-img-container">
                 <img
                     className="aside-item-img"
@@ -18,6 +21,8 @@ export default function AsideItem(props) {
                 </h2>
                 <p className="aside-item-author">{props.author}</p>
             </div>
+            
         </div>
+        </NavLink>
     );
 }
