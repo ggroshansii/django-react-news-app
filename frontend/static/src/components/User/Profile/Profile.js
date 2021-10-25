@@ -69,7 +69,7 @@ function Profile(props) {
             <div>
                 <NavLink to="/account/blogs/create">
                     <button className="btn btn-primary profile-btn btn-goldenrod">
-                        Submit a Blog!
+                        Submit New Blog!
                     </button>
                 </NavLink>
                 <NavLink to="/account/blogs/drafts">

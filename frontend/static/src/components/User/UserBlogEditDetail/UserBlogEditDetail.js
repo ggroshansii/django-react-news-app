@@ -100,12 +100,14 @@ function UserBlogPostDetail(props) {
     }
 
     return (
-        <div className="edit-post-form-container">
+        <div className="blogform-container">
+        <h2 className="blogform-heading mb-3">Edit Blog:</h2>
             <form className="form-control" onSubmit={handleSubmit}>
-                <div className="form-group">
+                
+                <div className="form-group mt-2">
                     <label htmlFor="title">Title</label>
                     <input
-                        className="form-control"
+                        className="form-control mt-1"
                         type="text"
                         id="title"
                         placeholder="Enter Title.."
@@ -114,10 +116,10 @@ function UserBlogPostDetail(props) {
                         name="title"
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group mt-2">
                     <label htmlFor="body">Body</label>
                     <textarea
-                        className="form-control"
+                        className="form-control mt-1"
                         id="body"
                         placeholder="Enter Body.."
                         onChange={handleChange}
@@ -125,20 +127,20 @@ function UserBlogPostDetail(props) {
                         name="body"
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group mt-2">
                     <label htmlFor="image">Image</label>
                     <input
-                        className="form-control"
+                        className="form-control mt-1"
                         type="file"
                         id="image"
                         onChange={handleImage}
                         name="image"
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group mt-2">
                     <label htmlFor="category">Category</label>
                     <select
-                        className="form-control"
+                        className="form-control mt-1"
                         id="category"
                         onChange={handleChange}
                         value={blogObj.category}
@@ -152,14 +154,10 @@ function UserBlogPostDetail(props) {
                         <option value="Petrology">Petrology</option>
                         <option value="Sedimentology">Sedimentology</option>
                         <option value="Volcanology">Volcanology</option>
-                        <option value="General Tectonics">
-                            General Tectonics
-                        </option>
+                        <option value="General Tectonics">General Tectonics</option>
                     </select>
                 </div>
-                <button type="submit" className="btn btn-primary">
-                    Submit New Draft
-                </button>
+                <button type="submit" className="btn btn-primary btn-goldenrod blogform-btn mt-3">Submit New Draft</button>
             </form>
         </div>
     );
