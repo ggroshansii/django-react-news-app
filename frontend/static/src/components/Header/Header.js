@@ -2,6 +2,7 @@ import "./Header.css";
 import React from "react";
 import { NavLink, Redirect } from "react-router-dom";
 import Cookies from "js-cookie";
+import { FaGithub, FaTwitter,FaLaptopCode, FaLinkedin } from "react-icons/fa"
 
 export default function Header(props) {
     const currentDate = new Date();
@@ -134,6 +135,15 @@ export default function Header(props) {
                 <h2 className="header-date">
                     {month_string}, {day} {year}{" "}
                 </h2>
+                <div className="header-social-container">
+                <a href="https://github.com/ggroshansii" className="social-btn github-header-btn"><FaGithub /></a>
+                <a href="https://twitter.com/codingforsci" className="social-btn twitter-header-btn"><FaTwitter/></a>
+                <a href="https://ggroshansii.github.io/" className="social-btn website-header-btn"><FaLaptopCode/></a>
+                <a href="https://linkedin.com/in/garthgroshansii" className="social-btn linkedin-header-btn"><FaLinkedin/></a>
+
+     
+
+                </div>
             </div>
 
             <div className="collpase navbar-collapse " id="navbarResponsive">
@@ -147,6 +157,7 @@ export default function Header(props) {
                     {loginRegisterLink}
                     {adminLink}
                     {logoutLink}
+                    
                 </ul>
             </div>
         </div>

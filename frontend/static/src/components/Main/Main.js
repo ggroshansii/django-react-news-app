@@ -4,6 +4,7 @@ import Aside from "./Aside/Aside";
 import BlogForm from "./BlogForm/BlogForm";
 import "./Main.css";
 
+
 export default function Main(props) {
     const uniqueCategories = new Set();
     props.currentBlogs.map((blog) => {
@@ -15,6 +16,7 @@ export default function Main(props) {
     }
     return (
         <div>
+        
             <div className="header-category-container">
                 <button
                     className="header-category"

@@ -15,7 +15,7 @@
 .header-date {
     margin-top: 0.5rem;
     margin-bottom: 0rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
     font-size: 1.5rem;
 }
 
@@ -24,12 +24,15 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #FFFFFF;
+    background-color: goldenrod;
+    /* position: sticky;
+    top: 0px; */
+    z-index: 20;
 }
 
 .header-category {
     margin: 0.25rem 0rem;
-    color: black;
+    color: white;
     text-decoration: none;
     font-style: italic;
     width: 175px;
@@ -40,10 +43,10 @@
 }
 
 .header-category:focus{
-    color: goldenrod;
+    color: black
 }
 .header-category:hover{
-    color: goldenrod;
+
     cursor: pointer;
     letter-spacing: 0.15rem;
 
@@ -53,10 +56,13 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border-top: 2px solid lightgray;
-    border-bottom: 2px solid lightgray;
+    border-top: 1px solid darkslategray;
+    border-bottom: 1px solid darkslategray;
     background-color: #ffffff;
-
+    font-family: 'Playfair Display', serif; 
+    text-align: center;
+    position: sticky;
+    top: 0px;
 }
 
 .nav-link{
@@ -75,7 +81,41 @@
     color: black;
 }
 
-
 .upper-header-container {
    background-color: #ffffff;
+}
+
+.header-social-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-btn {
+    margin: 0rem 0.75rem 0.5rem 0.75rem;
+    font-size: 1.25rem;
+    border: none;
+    background: transparent;
+    color: black;
+}
+
+.twitter-header-btn{
+    color: #1DA1F2;
+}
+
+.github-header-btn {
+    color: purple;
+}
+
+.website-header-btn {
+    color: darkgreen;
+}
+
+.linkedin-header-btn {
+    color: #0967C2
+}
+
+.twitter-header-btn:hover, .github-header-btn:hover,.website-header-btn:hover {
+    color: darkgoldenrod;
 }
