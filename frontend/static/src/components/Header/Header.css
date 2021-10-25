@@ -50,6 +50,8 @@
     margin: 0 0.5rem;
     font-weight: 700;
     color: black;
+    letter-spacing: 0.05rem;
+    transition: letter-spacing 1s;
 }
 
 .nav-link:focus {
@@ -57,5 +59,6 @@
 }
 .nav-link:hover {
     color: tomato;
+    letter-spacing: 0.175rem;
 }
 

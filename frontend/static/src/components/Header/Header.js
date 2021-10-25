@@ -93,7 +93,7 @@ export default function Header(props) {
                     className="nav-link"
                     to="/logout"
                 >
-                    Logout
+                    LOGOUT
                 </NavLink>
             </li>
 
@@ -106,7 +106,7 @@ export default function Header(props) {
                             className="nav-link"
                             to="/admin/portal"
                         >
-                            Admin Portal
+                            ADMIN PORTAL
                         </NavLink>
                     </li>
                 </>
@@ -118,7 +118,7 @@ export default function Header(props) {
                         className="nav-link"
                         to="/profile"
                     >
-                        Profile
+                        PROFILE
                     </NavLink>
                 </li>
             );
@@ -131,7 +131,7 @@ export default function Header(props) {
                         className="nav-link"
                         to="/login"
                     >
-                        Login
+                        LOGIN
                     </NavLink>
                 </li>
                 <li className="nav-item">
@@ -139,7 +139,7 @@ export default function Header(props) {
                         className="nav-link"
                         to="/registration"
                     >
-                        Registration
+                        REGISTRATION
                     </NavLink>
                 </li>
             </>
@@ -160,7 +160,7 @@ export default function Header(props) {
                             style=""
                             to="/"
                         >
-                            Home
+                            HOME
                         </NavLink>
                     </li>
                     {profileLink}
