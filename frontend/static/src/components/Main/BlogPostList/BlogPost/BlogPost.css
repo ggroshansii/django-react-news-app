@@ -10,7 +10,7 @@
     transition: transform 1s;
 }
 .blog-card-container:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
     border: 2px solid goldenrod;
 }
 
