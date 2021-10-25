@@ -1,0 +1,22 @@
+
+.blogform-container {
+    width: 575px;
+    background: #FFFFFF;
+    padding: 2rem 3rem;
+    margin: 2rem auto;
+    border: 2px solid goldenrod;
+}
+
+.blogform-heading {
+    color: goldenrod;
+    font-family: 'Playfair Display', serif; 
+}
+
+.blogform-container .blogform-btn {
+    width: 200px;
+}
+
+.form-control {
+    border: 1px solid goldenrod;
+    padding: 0.5rem;
+}
