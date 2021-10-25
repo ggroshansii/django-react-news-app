@@ -1,7 +1,6 @@
 .aside-container {
     width: 300px; 
-    height: 100vh;
-    margin-top: 1.5rem;
+    margin: 1.5rem auto 0rem auto;
     border: 1px solid black;
     overflow: hidden;
     padding: 1rem;

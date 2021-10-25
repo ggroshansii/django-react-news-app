@@ -1,12 +1,10 @@
-import React from 'react'
-import BlogPostList from './BlogPostList/BlogPostList'
-import Aside from './Aside/Aside'
-import BlogForm from "./BlogForm/BlogForm"
-import "./Main.css"
+import React from "react";
+import BlogPostList from "./BlogPostList/BlogPostList";
+import Aside from "./Aside/Aside";
+import BlogForm from "./BlogForm/BlogForm";
+import "./Main.css";
 
 export default function Main(props) {
-
-
     const uniqueCategories = new Set();
     props.currentBlogs.map((blog) => {
         uniqueCategories.add(blog.category);
@@ -14,10 +12,10 @@ export default function Main(props) {
 
     function handleClick(e) {
         props.setFilter(e.target.innerHTML);
-    } 
+    }
     return (
         <div>
-                        <div className="header-category-container">
+            <div className="header-category-container">
                 <a
                     className="header-category"
                     value={null}
@@ -37,11 +35,22 @@ export default function Main(props) {
                     );
                 })}
             </div>
-            <div className="main-container">
-            <BlogPostList currentBlogs={props.currentBlogs} filteredBlogs={props.filteredBlogs}/>
-            <Aside currentBlogs={props.currentBlogs}/>
-        </div>
-        </div>
+            <div className="main-container container">
+                <div className="row">
+                <div className="col">
+                <BlogPostList
+                    currentBlogs={props.currentBlogs}
+                    filteredBlogs={props.filteredBlogs}
+                />
+                </div>
+                <div className="col">
+                <Aside currentBlogs={props.currentBlogs}
+                         />
+                </div>
 
-    )
+                </div>
+
+            </div>
+        </div>
+    );
 }
