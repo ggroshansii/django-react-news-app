@@ -129,9 +129,13 @@ export default function Header(props) {
     return (
         <div className="header-container">
             <div className="upper-header-container">
-                <h1 className="newspaper-name" onClick={handleLogoClick}>
-                    The Gartholomew Gazette
+            
+            <h1 className="newspaper-name" onClick={handleLogoClick}>
+            <NavLink className="newspaper-headin-navlink" to="/">The Gartholomew Gazette    </NavLink>
                 </h1>
+            
+
+
                 <h2 className="header-date">
                     {month_string}, {day} {year}{" "}
                 </h2>
