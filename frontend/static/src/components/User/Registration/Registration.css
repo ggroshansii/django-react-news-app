@@ -1,0 +1,13 @@
+
+.registration-container {
+    width: 450px;
+    background: #FFFFFF;
+    padding: 2rem 3rem;
+    margin: 2rem auto;
+    border: 2px solid goldenrod;
+}
+
+.registration-heading {
+    color: goldenrod;
+    font-family: 'Playfair Display', serif; 
+}

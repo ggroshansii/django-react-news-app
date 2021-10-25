@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Cookies from 'js-cookie'
 import {withRouter,Redirect} from 'react-router-dom'
+import "./Registration.css"
 
 export default function Registration(props) {
     const [user, setUser] = useState({
@@ -61,44 +62,45 @@ export default function Registration(props) {
     return (
         <div className="registration-container">
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
+            <h2 className="registration-heading">Register:</h2>
+                <div className="form-group mt-4">
                     <label htmlFor="username">Username:</label>
                     <input
                         id="username"
-                        className="form-control"
+                        className="form-control mt-2"
                         type="text"
                         placeholder="Enter Username.."
                         onChange={handleChange}
                         value={user.username}
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group mt-3">
                     <label htmlFor="email">Email:</label>
                     <input
                         id="email"
-                        className="form-control"
+                        className="form-control mt-2"
                         type="email"
                         placeholder="Enter Email..."
                         onChange={handleChange}
                         value={user.email}
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group mt-3">
                     <label htmlFor="password1">Password:</label>
                     <input
                         id="password1"
-                        className="form-control"
+                        className="form-control mt-2"
                         type="password"
                         placeholder="Enter Password..."
                         onChange={handleChange}
                         value={user.password1}
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group mt-3">
                     <label htmlFor="password2">Confirm Password:</label>
                     <input
                         id="password2"
-                        className="form-control"
+                        className="form-control mt-2"
                         type="password"
                         placeholder="Enter Password..."
                         onChange={handleChange}
@@ -111,7 +113,7 @@ export default function Registration(props) {
                     )}
                     
                 </div>
-                <button type='submit' className="btn btn-success">Register</button>
+                <button type='submit' className="btn btn-success btn-goldenrod mt-4">Register</button>
             </form>
         </div>
     );

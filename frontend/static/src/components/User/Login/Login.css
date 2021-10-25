@@ -18,6 +18,7 @@
     border-color: #FFFFFF; 
     font-weight: 700;
     font-family: 'Playfair Display', serif; 
+    width: 100px;
   } 
    
   .btn-goldenrod:hover, 
