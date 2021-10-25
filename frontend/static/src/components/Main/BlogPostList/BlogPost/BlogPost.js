@@ -20,7 +20,7 @@ export default function BlogPost(props) {
                     <div className="blog-card-text-container">
                         <p className="blog-card-category">{props.category}</p>
                         <h2 className="blog-card-title">{props.title}</h2>
-                        <p className="blog-card-author">{props.author}</p>
+                        <p className="blog-card-author">By: {props.author}</p>
                     </div>
                 </div>
             </NavLink>
