@@ -5,7 +5,7 @@ from rest_framework import permissions
 from .serializers import ArticleSerializer
 from .models import Article
 from rest_framework.permissions import IsAdminUser, IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser
-from .permissions import IsOwnerOrReadOnly, IsOwner
+from .permissions import IsOwnerAndStatusLock, IsOwnerOrReadOnly, IsOwner
 
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
@@ -39,7 +39,7 @@ from django.http import JsonResponse, HttpResponse
 class ReadOnlyArticleListView (generics.ListAPIView):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsOwnerOrReadOnly,)
 
     def get_queryset(self):
         return Article.objects.filter(status='PBLH')
@@ -111,10 +111,14 @@ class ReadOnlyArticleDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ArticleSerializer
     permission_classes = (IsOwnerOrReadOnly,)
 
+
+
 class UserArticleDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    permission_classes = (IsOwner,)
+    permission_classes = (IsOwnerAndStatusLock,)
+
+
 
 class AdminArticleDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()

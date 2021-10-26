@@ -40,7 +40,6 @@ export default function BlogForm() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        alert('hey');
         const formData = new FormData();
         formData.append('title', post.title)
         formData.append('body', post.body)
@@ -57,10 +56,7 @@ export default function BlogForm() {
         const response = await fetch("/api/articles/", options)
         const data = await response.json()
         if (response.ok === false) {
-            console.log("r", response);
-            console.log('d', data);
         } else {
-            console.log('SUCCESS', data)
             setPost(() => ({
                 title: "",
                 body: "",
