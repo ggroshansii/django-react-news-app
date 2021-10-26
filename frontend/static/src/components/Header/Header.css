@@ -90,6 +90,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    left: 600px;
+    top: 3px;
 }
 
 .social-btn {
