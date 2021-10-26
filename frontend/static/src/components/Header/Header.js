@@ -127,7 +127,7 @@ export default function Header(props) {
     }
 
     return (
-        <div className="header-container">
+        <div className="header-container container">
             <div className="upper-header-container">
             
             <h1 className="newspaper-name" onClick={handleLogoClick}>

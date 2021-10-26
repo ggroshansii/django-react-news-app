@@ -4,7 +4,6 @@ import Aside from "./Aside/Aside";
 import BlogForm from "./BlogForm/BlogForm";
 import "./Main.css";
 
-
 export default function Main(props) {
     const uniqueCategories = new Set();
     props.currentBlogs.map((blog) => {
@@ -16,19 +15,19 @@ export default function Main(props) {
     }
     return (
         <div>
-        
-            <div className="header-category-container">
+            <div className="header-category-container container-fluid ">
+                <div className="row header-category-row">
                 <button
-                    className="header-category"
+                    className="header-category col-md col-sm-4"
                     value={null}
                     onClick={handleClick}
                 >
-                    All
+                    #Recent
                 </button>
                 {[...uniqueCategories].map((category) => {
                     return (
                         <button
-                            className="header-category"
+                            className="header-category col-md col-sm-4"
                             value={category}
                             onClick={handleClick}
                         >
@@ -36,6 +35,8 @@ export default function Main(props) {
                         </button>
                     );
                 })}
+                </div>
+
             </div>
             <div className="main-container container">
                 <div className="row gx-5">

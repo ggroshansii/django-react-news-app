@@ -35,7 +35,7 @@
     color: white;
     text-decoration: none;
     font-style: italic;
-    width: 175px;
+    /* width: 225px; */
     text-align: center;
     border: none;
     background-color: transparent;
@@ -130,4 +130,11 @@
 
 .newspaper-headin-navlink:hover {
     color: black;
+}
+
+.header-category-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
 }
