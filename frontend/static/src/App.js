@@ -15,7 +15,7 @@ import BlogDetailReadOnly from "./components/Main/BlogDetail/BlogDetailReadOnly"
 import AdminBlogList from "./components/User/AdminBlogList/AdminBlogList";
 
 function App() {
-    const [isAuth, setIsAuth] = useState();
+    const [isAuth, setIsAuth] = useState(false);
     const [currentBlogs, setCurrentBlogs] = useState([]);
     const history = useHistory();
     const [isAdmin, setIsAdmin] = useState(false);
@@ -171,6 +171,7 @@ function App() {
                         filteredBlogs={filteredBlogs}
                         currentBlogs={currentBlogs}
                         updatePopularityScore={updatePopularityScore}
+                        isAuth={isAuth}
                     />
                 </Route>
             </Switch>

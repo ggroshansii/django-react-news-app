@@ -45,6 +45,7 @@ export default function Main(props) {
                             currentBlogs={props.currentBlogs}
                             filteredBlogs={props.filteredBlogs}
                             updatePopularityScore={props.updatePopularityScore}
+                            isAuth={props.isAuth}
                         />
                     </div>
                     <div className="col">

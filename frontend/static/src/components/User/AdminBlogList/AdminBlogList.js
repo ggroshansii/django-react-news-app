@@ -15,7 +15,7 @@ export default function AdminBlogList(props) {
 
     useEffect(() => {
         grabAdminArticles(categorySelection);
-    }, [categorySelection]);
+    }, [, categorySelection]);
 
     async function grabAdminArticles(category = "ALL") {
         const options = {
@@ -64,7 +64,7 @@ export default function AdminBlogList(props) {
         <div className="admin-blog-list-container">
             <form className="form-control">
                 <div className="form-group">
-                    <label HTMLfor="status">Filter Articles by Status:</label>
+                    <label HTMLfor="status">Filter Blogs by Status:</label>
 
                     <select
                         id="status"

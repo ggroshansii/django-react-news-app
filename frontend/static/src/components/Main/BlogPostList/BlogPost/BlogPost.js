@@ -8,7 +8,12 @@ export default function BlogPost(props) {
 
 
     function handleScoreUpdate() {
-        props.updatePopularityScore(props.id, props)
+        console.log("IS AUTH", props.isAuth)
+        console.log("!IS AUTH", !props.isAuth)
+        if (props.isAuth === false) {
+            props.updatePopularityScore(props.id, props)
+        }
+
     }
 
     return (

@@ -73,7 +73,7 @@ function Profile(props) {
                     </button>
                 </NavLink>
                 <NavLink to="/account/blogs/drafts">
-                    <button className="btn btn-primary profile-btn btn-goldenrod mt-2">My Drafts</button>
+                    <button className="btn btn-primary profile-btn btn-goldenrod mt-2">My Blogs</button>
                 </NavLink>
             </div>
         </div>
