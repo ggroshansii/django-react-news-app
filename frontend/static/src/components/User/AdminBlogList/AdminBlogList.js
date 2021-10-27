@@ -11,13 +11,11 @@ export default function AdminBlogList(props) {
     const [adminArticles, setAdminArticles] = useState([]);
     const [categorySelection, setCategorySelection] = useState("ALL");
 
-
-
     useEffect(() => {
         grabAdminArticles(categorySelection);
-    }, [, categorySelection]);
+    }, [ , categorySelection]);
 
-    async function grabAdminArticles(category = "ALL") {
+    async function grabAdminArticles() {
         const options = {
             method: "GET",
             headers: {
@@ -25,7 +23,8 @@ export default function AdminBlogList(props) {
                 "X-CSRFToken": Cookies.get("csrftoken"),
             },
         };
-        const response = await fetch(`/api/articles/admin/${category}`,
+        const response = await fetch(
+            `/api/articles/admin/${categorySelection}`,
             options
         );
         if (response.ok === false) {
@@ -36,29 +35,55 @@ export default function AdminBlogList(props) {
         }
     }
 
-   function handleOptionChange(e) {
+    function handleOptionChange(e) {
         setCategorySelection(e.target.value);
     }
-    
+
     let html;
-    if (categorySelection == "SBMT") {
+    if (adminArticles.length === 0) {
+        html = (
+            <h1 className="no-current-drafts-heading mx-auto mt-10">
+                No Current Articles in this Section
+            </h1>
+        );
+    } else if (categorySelection == "SBMT") {
         html = adminArticles.map((blog) => {
-            return <AdminBlogSubmitPost {...blog} removeBlog={props.removeBlog} adminArticles={adminArticles} setAdminArticles={setAdminArticles}/>
-        })
+            return (
+                <AdminBlogSubmitPost
+                    {...blog}
+                    removeBlog={props.removeBlog}
+                    adminArticles={adminArticles}
+                    setAdminArticles={setAdminArticles}
+                />
+            );
+        });
     } else if (categorySelection == "ALL" || categorySelection == "DFT") {
         html = adminArticles.map((blog) => {
-            return <BlogPost {...blog} />
-        })
+            return <BlogPost {...blog} />;
+        });
     } else if (categorySelection == "RJT") {
         html = adminArticles.map((blog) => {
-            return <AdminBlogRejectPost {...blog} removeBlog={props.removeBlog} adminArticles={adminArticles} setAdminArticles={setAdminArticles} />
-        })
+            return (
+                <AdminBlogRejectPost
+                    {...blog}
+                    removeBlog={props.removeBlog}
+                    adminArticles={adminArticles}
+                    setAdminArticles={setAdminArticles}
+                />
+            );
+        });
     } else if (categorySelection == "PBLH") {
         html = adminArticles.map((blog) => {
-            return <AdminBlogPublishPost {...blog} removeBlog={props.removeBlog} adminArticles={adminArticles} setAdminArticles={setAdminArticles}/>
-        })
+            return (
+                <AdminBlogPublishPost
+                    {...blog}
+                    removeBlog={props.removeBlog}
+                    adminArticles={adminArticles}
+                    setAdminArticles={setAdminArticles}
+                />
+            );
+        });
     }
-
 
     return (
         <div className="admin-blog-list-container">

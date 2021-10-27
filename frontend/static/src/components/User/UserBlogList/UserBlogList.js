@@ -30,20 +30,18 @@ export default function UserBlogList(props) {
         }
     }
 
-    if (OwnBlogsState.length === 0) {
-        return (
-            <h1 className="no-current-drafts-heading mx-auto">
-                No Current Articles in this Section
-            </h1>
-        );
-    }
-
     function handleOptionChange(e) {
         setCategorySelection(e.target.value);
     }
 
     let html;
-    if (categorySelection == "DFT") {
+    if (OwnBlogsState.length === 0) {
+           html = <h1 className="no-current-drafts-heading mx-auto mt-10">
+                No Current Articles in this Section
+            </h1>
+    }
+
+    else if (categorySelection == "DFT") {
         html = OwnBlogsState.map((blog) => {
             return (
                 <UserBlogPost
